@@ -21,9 +21,9 @@ public class Clerigo extends Peca {
     
     @Override
     public void CriarMovimentacao() {
-        movimentacao.Add(new Movtree(0,1)).Add(new Movtree(0,2)).Add(new Movtree(0,3));
-        movimentacao.Add(new Movtree(1,1)).Add(new Movtree(2,2)).Add(new Movtree(3,3));
-        movimentacao.Add(new Movtree(-1,-1)).Add(new Movtree(-2,-2)).Add(new Movtree(-3,-3));
+        movimentacao.Add(new MovTree(0,1)).Add(new MovTree(0,2)).Add(new MovTree(0,3));
+        movimentacao.Add(new MovTree(1,1)).Add(new MovTree(2,2)).Add(new MovTree(3,3));
+        movimentacao.Add(new MovTree(-1,-1)).Add(new MovTree(-2,-2)).Add(new MovTree(-3,-3));
     
 }
 }   
