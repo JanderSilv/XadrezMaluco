@@ -12,7 +12,7 @@ import com.xadrez.estructure.Position;
 
 public class PaiDeTodos extends Peca {
 
-    public Necromancer(Position posicao, int time) {
+    public PaiDeTodos(Position posicao, int time) {
         super(1, "PaiDeTodos", posicao, time);
         CriarMovimentacao();
     }
