@@ -6,8 +6,10 @@
 package com.xadrez.core;
 
 import com.xadrez.estructure.Position;
+import com.xadrez.graphic.TelaXadrez;
 import com.xadrez.pecas.Peao;
 import com.xadrez.pecas.Silenciador;
+
 
 /**
  *
@@ -17,21 +19,28 @@ public class Xadrez {
     
     Jogador jogador1,jogador2;
     Tabuleiro tabuleiro;
+    TelaXadrez window;
     
+    public Xadrez(Jogador j1,Jogador j2,TelaXadrez window){
     
-    public Xadrez(Jogador j1,Jogador j2){
     tabuleiro = new Tabuleiro();
     jogador1 = j1;
     jogador2 = j2;
-    
+    this.window = window;
     
     GerarPecas(jogador1);
     GerarPecas(jogador2);
-    
     ColocarNoTabuleiro();
-        System.out.println("Partida criada");
+    UpdateWindow();
+    
+    GameLoop();
     }
     
+   private void GameLoop(){
+   
+      
+   } 
+   
    private void GerarPecas(Jogador j){
      for(int x=0;x<tabuleiro.SIZE;x++){
         j.pecas.add(new Peao(new Position(x, Math.abs(j.time-1)) ,j.time));
@@ -50,4 +59,14 @@ public class Xadrez {
     }
     }
     
+   private void UpdateWindow(){
+       for(int x=0;x<tabuleiro.SIZE;x++){
+            for(int y=0;y<tabuleiro.SIZE;y++){
+                Peca p = tabuleiro.GetPeca(x, y);
+                if(p!=null){
+                     window.casas_tab[x][y].setText(p.nome);              
+                }
+           }
+       }
+   }
 }
