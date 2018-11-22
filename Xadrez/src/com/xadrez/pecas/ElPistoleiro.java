@@ -16,6 +16,8 @@ import com.xadrez.estructure.Position;
     
     @Override
     public void CriarMovimentacao(){
-          
+          movimentacao.Add(new MovTree(0,1)).Add(new MovTree(0,2)).Add(new MovTree(0,3));
+          movimentacao.Add(new MovTree(-1,1)).Add(new MovTree(-1,2))Add(new MovTree(-1,3));
+          movimentacao.Add(new MovTree(1,1)).Add(new MovTree(1,2))Add(new MovTree(1,3));
     }
     
