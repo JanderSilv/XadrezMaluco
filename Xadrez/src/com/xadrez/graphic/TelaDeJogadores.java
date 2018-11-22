@@ -104,7 +104,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Jogador j1 =new Jogador(0,txf_Nome_Jogador1.getText());
-        Jogador j2 =new Jogador(10,txf_Nome_Jogador2.getText());
+        Jogador j2 =new Jogador(9,txf_Nome_Jogador2.getText());
         new TelaXadrez(j1, j2).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_okActionPerformed

@@ -7,8 +7,10 @@ package com.xadrez.graphic;
 
 import com.xadrez.core.Jogador;
 import com.xadrez.core.Xadrez;
+import com.xadrez.core.XadrezButton;
+import java.awt.Color;
 import static javax.security.auth.callback.ConfirmationCallback.YES;
-import javax.swing.JDialog;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
@@ -19,17 +21,61 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
 public class TelaXadrez extends javax.swing.JFrame {
 
   Jogador j1,j2;
-    private int QUESTION_MENSAGE;
+   
+    public XadrezButton[][] casas_tab;
     
     public TelaXadrez(Jogador j1,Jogador j2) {
-        initComponents();
+        casas_tab = new XadrezButton[10][10];
         this.j1=j1;
         this.j2=j2;
-        SetPlayer(j1);
-        Xadrez xadrex = new Xadrez(j1,j2);
+       
+        initComponents();
+       
+        GerarTab();
+        new Xadrez(j1,j2,this);
     }
 
+    public void GerarTab(){
+       
+       
+        int panel_x=panel_Tabuleiro.getSize().width;
+        int panel_y=panel_Tabuleiro.getSize().height;
+        
+        int btn_sizex = panel_x/10;
+        int bnt_sizey = panel_y/10;
+        
+        for(int x=0;x<10;x++){
+            for(int y=0;y<10;y++){
+                  
+                XadrezButton b= new XadrezButton();
+                
+                if ((y % 2 == 1 && x % 2 == 1) || (y % 2 == 0 && x % 2 == 0)) 
+                {
+                    b.setBackground(Color.WHITE);
+                } else {
+                    b.setBackground(Color.BLACK);
+                }  
+                
+                   b.setLocation(btn_sizex*x, bnt_sizey*y);
+                   b.setSize(btn_sizex, bnt_sizey);
+                   casas_tab[x][y] = b;
+                   
+                   panel_Tabuleiro.add(b);
+            }
+        }
+       
+       
+   
+        
+//panel_Tabuleiro
+       
+     
+    }
   
+    public void SetPlayer(Jogador j){
+    txt_Nome_Player.setText(j.nome);
+  }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -169,21 +215,29 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panel_Tabuleiro.setBackground(new java.awt.Color(204, 204, 204));
+        panel_Tabuleiro.setBackground(new java.awt.Color(255, 255, 255));
+        panel_Tabuleiro.setMinimumSize(new java.awt.Dimension(320, 320));
+        panel_Tabuleiro.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                panel_TabuleiroAncestorResized(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_TabuleiroLayout = new javax.swing.GroupLayout(panel_Tabuleiro);
         panel_Tabuleiro.setLayout(panel_TabuleiroLayout);
         panel_TabuleiroLayout.setHorizontalGroup(
             panel_TabuleiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         panel_TabuleiroLayout.setVerticalGroup(
             panel_TabuleiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
 
         btn_Nova_Partida.setText("Nova Partida");
@@ -232,9 +286,26 @@ public class TelaXadrez extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_Nova_PartidaActionPerformed
 
-  public void SetPlayer(Jogador j){
-    txt_Nome_Player.setText(j.nome);
-  }
+    private void panel_TabuleiroAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_panel_TabuleiroAncestorResized
+        // TODO add your handling code here:
+        int panel_x=panel_Tabuleiro.getSize().width;
+        int panel_y=panel_Tabuleiro.getSize().height;
+        
+        int btn_sizex = panel_x/10;
+        int bnt_sizey = panel_y/10;
+          
+        for(int i=0;i<10;i++){
+            for(int j=0;j<10;j++){
+                if(casas_tab[i][j]!=null){
+                  casas_tab[i][j].setSize(btn_sizex, bnt_sizey);
+                  casas_tab[i][j].setLocation(btn_sizex*i, bnt_sizey*j);
+                }                  
+            }
+        }
+       
+    }//GEN-LAST:event_panel_TabuleiroAncestorResized
+
+  
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ajuda_Peca;
