@@ -24,7 +24,6 @@ public class XadrezButtonActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         XadrezButton button = (XadrezButton)e.getSource();
         xadrez.CasaSelecionada(button.coord_x, button.coord_y);
-        System.out.println("Botao clicado: "+button.coord_x+" - "+button.coord_y); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
