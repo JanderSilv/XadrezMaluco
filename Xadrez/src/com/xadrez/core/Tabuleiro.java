@@ -18,13 +18,11 @@ public class Tabuleiro {
     public final int SIZE = 10;
     
     public Peca[][] tab;
-    
-    
+       
     public Tabuleiro(){
          tab = new Peca[SIZE][SIZE];
     }
-    
-    
+   
     public Peca GetPeca(int x,int y){
         if(IsInBounds(x, y)){
             return tab[x][y];
@@ -41,15 +39,15 @@ public class Tabuleiro {
        return (IsInBounds(x,y) && GetPeca(x, y)==null);
     }
     
-    public boolean SetPeca(int x,int y,Peca p){
-        if(IsFree(x, y)){
+    public void SetPeca(int x,int y,Peca p){
+        
             p.posicao.x=x;
             p.posicao.y=y;
             tab[x][y] = p;
-          return true;
-        }
-        return false;
+       
+        
     }
+   
     public void RemovePeca(int x,int y){
     tab[x][y]=null;
     }
@@ -89,9 +87,24 @@ public class Tabuleiro {
         for(int i =0;i<size;i++)
         {
             if(m.value!=null){
+                int mvy =m.value.y;  
+                if(time>0)
+                 {
+                     mvy*=-1;
+                 }
                 int x= m.value.x+from.x;
-                int y= m.value.y+from.y;
-                if(m.IsParavel()==false && GetPeca(x, y)!=null) break;
+                int y= mvy+from.y;
+                Peca p =GetPeca(x, y);
+               
+                if(p!=null){
+                 if((m.IsParavel()==false) || (m.IsParavel() && p.time == time)) break;
+                 
+                 if(m.IsParavel() && p.time!=time){
+                    pos.add(new Position(x, y));
+                    break;
+                 }
+                }
+                
             }
             ArrayList<Position> aux = GetValidsMoviments(m.Get(i),from,time);
             if(aux.size()>0)
@@ -102,14 +115,13 @@ public class Tabuleiro {
         
             if(m.value!=null)
              {
-                 if(time>0)
+                 int mvy =m.value.y;  
+                if(time>0)
                  {
-                     m.value.y*=-1;
+                     mvy*=-1;
                  }
-                 
-                 int x= m.value.x+from.x;
-                 int y= m.value.y+from.y;
-                 System.out.println("Somando posicao");
+                int x= m.value.x+from.x;
+                int y= mvy+from.y;
                  
                  if(m.IsParavel()){                   
                     if(IsInBounds(x,y))
