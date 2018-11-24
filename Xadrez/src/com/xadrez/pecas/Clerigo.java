@@ -26,4 +26,4 @@ public class Clerigo extends Peca {
         movimentacao.Add(new MovTree(-1,1)).Add(new MovTree(-2,2)).Add(new MovTree(-3,3));
     
 }
-}   
+}
