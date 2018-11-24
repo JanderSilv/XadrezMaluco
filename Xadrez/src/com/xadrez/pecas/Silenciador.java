@@ -22,7 +22,7 @@ public class Silenciador extends Peca {
     
     @Override
     public void CriarMovimentacao(){
-        movimentacao.Add(new MovTree(-1,0,true)).Add(new MovTree(-1,1,true));
+        movimentacao.Add(new MovTree(-1,0,false)).Add(new MovTree(-1,1,true));
         movimentacao.Add(new MovTree( 0,1,false)).Add(new MovTree( 1,1,true));
         movimentacao.Add(new MovTree( 1,0,false)).Add(new MovTree(1,-1,true));
         movimentacao.Add(new MovTree(0,-1,false)).Add(new MovTree(-1,-1,true));

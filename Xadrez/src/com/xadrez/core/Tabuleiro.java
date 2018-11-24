@@ -43,10 +43,15 @@ public class Tabuleiro {
     
     public boolean SetPeca(int x,int y,Peca p){
         if(IsFree(x, y)){
+            p.posicao.x=x;
+            p.posicao.y=y;
             tab[x][y] = p;
           return true;
         }
         return false;
+    }
+    public void RemovePeca(int x,int y){
+    tab[x][y]=null;
     }
     
     public Peca[] GetPecasInRange(int x,int y,int range){
@@ -83,13 +88,16 @@ public class Tabuleiro {
   
         for(int i =0;i<size;i++)
         {
-          
+            if(m.value!=null){
+                int x= m.value.x+from.x;
+                int y= m.value.y+from.y;
+                if(m.IsParavel()==false && GetPeca(x, y)!=null) break;
+            }
             ArrayList<Position> aux = GetValidsMoviments(m.Get(i),from,time);
-
-                if(aux.size()>0)
-                {
-                    pos.addAll(aux);
-                }
+            if(aux.size()>0)
+            {
+                pos.addAll(aux);
+            }
         }
         
             if(m.value!=null)
@@ -101,21 +109,23 @@ public class Tabuleiro {
                  
                  int x= m.value.x+from.x;
                  int y= m.value.y+from.y;
+                 System.out.println("Somando posicao");
                  
                  if(m.IsParavel()){                   
                     if(IsInBounds(x,y))
                     {
                         Peca p = GetPeca(x,y);
                         if(p==null){
-                            pos.add(m.value);
+                            pos.add(new Position(x, y));
                         }
                         else if(p.time != time)
                         {
-                             pos.add(m.value);
+                             pos.add(new Position(x, y));
                         }
                     } 
                  }
              }
+            
             return pos;
     }
 }

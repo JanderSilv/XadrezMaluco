@@ -4,22 +4,11 @@
  * and open the template in the editor.
  */
 package com.xadrez.core;
-import javax.swing.JButton;
 
 /**
  *
  * @author ruann
  */
-public class XadrezButton extends JButton {
-    public int coord_x,coord_y;
-    
-    public XadrezButton(int x,int y){
-      
-        coord_x = x;
-        coord_y = y;
-    }
-
-  
-   
+public enum ControleDeJogo {
     
 }

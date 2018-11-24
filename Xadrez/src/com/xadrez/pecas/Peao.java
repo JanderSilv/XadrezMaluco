@@ -18,11 +18,12 @@ public class Peao extends Peca {
     public Peao(Position posicao, int time) {
         super(60, "Peao", posicao, time);
          CriarMovimentacao();
+         coolDown = -1;
     }
 
     @Override
     public void CriarMovimentacao() {
-        movimentacao.Add(new MovTree(0, 1, true));
+        movimentacao.Add(new MovTree(0, 1));
     }
     
 }
