@@ -80,8 +80,6 @@ public class TelaXadrez extends javax.swing.JFrame {
   
     public void SetPlayer(Jogador j){
     txt_Nome_Player.setText(j.nome);
-    j.cemiterio.add(new Silenciador(new Position(0, Math.abs(j.time))   ,j.time));
-    
     DefaultListModel listModel = new DefaultListModel();
     
     for(Peca p:j.cemiterio){

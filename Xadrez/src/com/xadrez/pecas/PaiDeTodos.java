@@ -1,4 +1,3 @@
-
 package com.xadrez.pecas;
 
 import com.xadrez.core.Peca;
