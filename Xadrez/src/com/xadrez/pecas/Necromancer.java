@@ -23,6 +23,6 @@ public class Necromancer extends Peca {
     @Override
     public void CriarMovimentacao() {
       movimentacao.Add(new MovTree(1, 1)).Add(new MovTree(2, 2)); // Movimentação para diagonal a direita.
-      movimentacao.Add(new MovTree(-1, -1)).Add(new MovTree(-2, -2)); // Movimentação para a diagonal a esquerda.
+      movimentacao.Add(new MovTree(-1, 1)).Add(new MovTree(-2, 2)); // Movimentação para a diagonal a esquerda.
     }    
 }
