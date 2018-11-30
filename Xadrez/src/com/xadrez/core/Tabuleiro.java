@@ -39,17 +39,21 @@ public class Tabuleiro {
        return (IsInBounds(x,y) && GetPeca(x, y)==null);
     }
     
-    public void SetPeca(int x,int y,Peca p){
-        
-            p.posicao.x=x;
-            p.posicao.y=y;
-            tab[x][y] = p;
-       
-        
+    public void MovePeca(int x,int y,Peca p){
+          p.setPosition(x, y);
+          tab[x][y] = p;
+    }
+    
+    public void SetPeca(Position pos,Peca p){   
+          tab[pos.x][pos.y] = p;
     }
    
     public void RemovePeca(int x,int y){
     tab[x][y]=null;
+    }
+    
+    public void RemovePeca(Position p){
+    tab[p.x][p.y]=null;
     }
     
     public Peca[] GetPecasInRange(int x,int y,int range){
