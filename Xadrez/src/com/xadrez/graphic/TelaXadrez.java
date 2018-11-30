@@ -10,14 +10,9 @@ import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
 import com.xadrez.core.XadrezButtonActionListener;
-import com.xadrez.estructure.Position;
-import com.xadrez.pecas.Silenciador;
 import java.awt.Color;
-import java.util.ArrayList;
 import static javax.security.auth.callback.ConfirmationCallback.YES;
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
@@ -98,14 +93,20 @@ public class TelaXadrez extends javax.swing.JFrame {
     }else{    
         txt_Nome_Peca.setText(p.nome);
         txt_Vida_Peca.setText(String.valueOf(p.vida));
+        
         if(p.coolDown == -1){
         txt_Habilidade_Peca.setText("não tem");
         btn_Ativar_Habilidade.setEnabled(false);
-        }else if(p.coolDown==0){
-        txt_Habilidade_Peca.setText("disponível");
+        }
+        else if(p.coolDown==0){
+         txt_Habilidade_Peca.setText("disponível");
          btn_Ativar_Habilidade.setEnabled(true);
-        }else{
+        }
+        else{
         txt_Habilidade_Peca.setText("espere "+String.valueOf(p.coolDown)+" turnos");
+         btn_Ativar_Habilidade.setEnabled(false);
+        }
+        if(p.time != xadrez.timeAtual){
          btn_Ativar_Habilidade.setEnabled(false);
         }
      }
@@ -125,12 +126,11 @@ public class TelaXadrez extends javax.swing.JFrame {
         txt_Habilidade_Peca = new javax.swing.JLabel();
         btn_Ativar_Habilidade = new javax.swing.JButton();
         btn_Ajuda_Peca = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lista_cemiterio = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
         txt_Nome_Player = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 0));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0));
+        btn_finalizar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lista_cemiterio = new javax.swing.JList<>();
         panel_Tabuleiro = new javax.swing.JPanel();
         btn_Nova_Partida = new javax.swing.JButton();
 
@@ -168,9 +168,27 @@ public class TelaXadrez extends javax.swing.JFrame {
 
         btn_Ativar_Habilidade.setText("Ativar Habilidade");
         btn_Ativar_Habilidade.setBorderPainted(false);
+        btn_Ativar_Habilidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Ativar_HabilidadeActionPerformed(evt);
+            }
+        });
 
         btn_Ajuda_Peca.setText("Ajuda");
         btn_Ajuda_Peca.setBorderPainted(false);
+
+        jLabel5.setText("CEMITÉRIO");
+
+        txt_Nome_Player.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Nome_Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_Nome_Player.setText("NOME DO JOGADOR");
+
+        btn_finalizar.setText("Finalizar Jogada");
+        btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_finalizarActionPerformed(evt);
+            }
+        });
 
         lista_cemiterio.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -179,54 +197,51 @@ public class TelaXadrez extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lista_cemiterio);
 
-        jLabel5.setText("CEMITÉRIO");
-
-        txt_Nome_Player.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Nome_Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_Nome_Player.setText("NOME DO JOGADOR");
-
         javax.swing.GroupLayout panel_ControleLayout = new javax.swing.GroupLayout(panel_Controle);
         panel_Controle.setLayout(panel_ControleLayout);
         panel_ControleLayout.setHorizontalGroup(
             panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txt_Nome_Player, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ControleLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
                 .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ControleLayout.createSequentialGroup()
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)
+                        .addComponent(txt_Habilidade_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ControleLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_ControleLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_Habilidade_Peca))
-                            .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panel_ControleLayout.createSequentialGroup()
-                                    .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_Vida_Peca)
-                                        .addComponent(txt_Nome_Peca)))
-                                .addGroup(panel_ControleLayout.createSequentialGroup()
-                                    .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btn_Ativar_Habilidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btn_Ajuda_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(13, 13, 13))))
-                        .addGap(34, 34, 34))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(55, 55, 55)
+                        .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_Nome_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Vida_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))))
             .addGroup(panel_ControleLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel5)
+                .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel5))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_Ativar_Habilidade))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_Ajuda_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_Nome_Player, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ControleLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_ControleLayout.setVerticalGroup(
@@ -235,34 +250,30 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txt_Nome_Player)
                 .addGap(30, 30, 30)
-                .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panel_ControleLayout.createSequentialGroup()
-                            .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(5, 5, 5))
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_Nome_Peca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_Vida_Peca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_Habilidade_Peca))
-                .addGap(37, 37, 37)
+                .addGap(39, 39, 39)
                 .addComponent(btn_Ativar_Habilidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
+                .addComponent(btn_finalizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Ajuda_Peca)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panel_Tabuleiro.setBackground(new java.awt.Color(255, 255, 255));
@@ -279,11 +290,11 @@ public class TelaXadrez extends javax.swing.JFrame {
         panel_Tabuleiro.setLayout(panel_TabuleiroLayout);
         panel_TabuleiroLayout.setHorizontalGroup(
             panel_TabuleiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGap(0, 581, Short.MAX_VALUE)
         );
         panel_TabuleiroLayout.setVerticalGroup(
             panel_TabuleiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGap(0, 611, Short.MAX_VALUE)
         );
 
         btn_Nova_Partida.setText("Nova Partida");
@@ -302,8 +313,8 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(panel_Tabuleiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panel_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panel_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_Nova_Partida)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -317,7 +328,7 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_Tabuleiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_Controle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panel_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -351,14 +362,29 @@ public class TelaXadrez extends javax.swing.JFrame {
        
     }//GEN-LAST:event_panel_TabuleiroAncestorResized
 
+    private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
+        if(xadrez.moveu == true || xadrez.usouHabilidade == true){
+            xadrez.moveu=true;
+            xadrez.usouHabilidade = true;
+            xadrez.mudaTurno();
+        }
+    }//GEN-LAST:event_btn_finalizarActionPerformed
+
+    private void btn_Ativar_HabilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ativar_HabilidadeActionPerformed
+        if(xadrez.pecaEmSelecao.coolDown==0){
+            xadrez.usouHabilidade = true;
+            xadrez.pecaEmSelecao.Habilidade();
+            xadrez.mudaTurno();
+        }
+    }//GEN-LAST:event_btn_Ativar_HabilidadeActionPerformed
+
   
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ajuda_Peca;
     private javax.swing.JButton btn_Ativar_Habilidade;
     private javax.swing.JButton btn_Nova_Partida;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
+    private javax.swing.JButton btn_finalizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

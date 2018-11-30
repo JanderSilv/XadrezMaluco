@@ -14,7 +14,7 @@ public class XadrezButton extends JButton {
     public int coord_x,coord_y;
     public boolean listening;
     public XadrezButton(int x,int y){
-      
+     
         coord_x = x;
         coord_y = y;
         listening = true;

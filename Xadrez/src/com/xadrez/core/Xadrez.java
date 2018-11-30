@@ -5,6 +5,7 @@
  */
 package com.xadrez.core;
 
+import com.xadrez.actions.AcaoPadrao;
 import com.xadrez.estructure.Position;
 import com.xadrez.graphic.TelaXadrez;
 import com.xadrez.pecas.Clerigo;
@@ -24,11 +25,17 @@ import java.util.ArrayList;
 public class Xadrez {
     
     Jogador jogador1,jogador2;
-    Tabuleiro tabuleiro;
     TelaXadrez window;
     Peca pecaParaMover;
-    int turno;
-    int timeAtual;
+    
+    public Tabuleiro tabuleiro;
+    public int turno;
+    public int timeAtual;
+    public Peca pecaEmSelecao;
+    public boolean moveu;
+    public boolean usouHabilidade;
+    public final Action acaoPadrao;
+    public Action acao;
     
     public Xadrez(Jogador j1,Jogador j2,TelaXadrez window){
     
@@ -44,25 +51,40 @@ public class Xadrez {
     UpdateWindow();
     
     window.SetPlayer(j1);
+    
+    acaoPadrao = new AcaoPadrao(this);
+    acao=acaoPadrao;
     }
     
    public void CasaSelecionada(int x,int y){
    
        UpdateWindow();
-       Peca p = tabuleiro.GetPeca(x, y);
+       Peca p = pecaEmSelecao =tabuleiro.GetPeca(x, y);
        window.SetPeca(p);
      
-       if(p!=null && p.time == timeAtual)
+       if(!moveu)
        {
-            pecaParaMover = p;
-            PintarCasas(tabuleiro.GetValidsMoviments(p.movimentacao, p.posicao, p.time));
-        
+          if(p!=null && p.time == timeAtual)
+          {
+               pecaParaMover = p;
+               PintarCasas(tabuleiro.GetValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time));
+          }
+          else
+          {
+               ExecutaMovimentacao(x, y);
+                pecaParaMover = null;
+          }  
        }
-       else
-       {
-           if(pecaParaMover!=null)
+     
+     
+    mudaTurno();
+        
+   }
+   
+   private void ExecutaMovimentacao(int x,int y){
+   if(pecaParaMover!=null)
             {
-                ArrayList<Position> mov_validos=tabuleiro.GetValidsMoviments(pecaParaMover.movimentacao, pecaParaMover.posicao, pecaParaMover.time);           
+                ArrayList<Position> mov_validos=tabuleiro.GetValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.time);           
                 for(Position pos:mov_validos)
                 {   
                    
@@ -84,26 +106,42 @@ public class Xadrez {
                            
                             }
                          
-                            tabuleiro.RemovePeca(pecaParaMover.posicao.x,pecaParaMover.posicao.y); 
-                            tabuleiro.SetPeca(x, y, pecaParaMover);                               
+                            tabuleiro.RemovePeca(pecaParaMover.getPosition()); 
+                            tabuleiro.MovePeca(x, y, pecaParaMover);                               
                            
-                             pecaParaMover = null;
+                           
                              UpdateWindow();
-                             turno++;
-                             timeAtual = (turno%2)*jogador2.time;
-                            
-                             if(timeAtual == 0){
-                                window.SetPlayer(jogador1);
-                             }else{
-                                window.SetPlayer(jogador2);
-                             }
+                           
+                            moveu = true;
                           
                         }
                      
                 }
             }
-                             
-       }  
+   }
+   
+   private void podeUsarHabilidade(){
+   Jogador j = (turno==0)? jogador1:jogador2;
+   }
+   
+   public void mudaTurno(){
+    if(moveu && usouHabilidade){
+        System.out.println("mudando turno");
+        turno++;
+        timeAtual = (turno%2)*jogador2.time;
+        window.SetPlayer((turno%2==0)? jogador1:jogador2);                       
+        moveu = false;
+        usouHabilidade = false;
+        UpdateWindow();
+        
+         for(Peca p:jogador1.pecas){
+         if(p.coolDown>0) p.coolDown--;
+         }
+         for(Peca p:jogador2.pecas){
+         if(p.coolDown>0) p.coolDown--;
+         }
+       
+    }
    }
    
    private void PintarCasas(ArrayList<Position> casas){
@@ -113,21 +151,20 @@ public class Xadrez {
        }
    }
    
-   
    private void GerarPecas(Jogador j){
      for(int x=0;x<tabuleiro.SIZE;x++){
-        j.pecas.add(new Peao(new Position(x, Math.abs(j.time-1)) ,j.time));     
+        j.pecas.add(new Peao(new Position(x, Math.abs(j.time-1)) ,j.time,this));     
      }
-     j.pecas.add(new Clerigo(new Position(0, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new Clerigo(new Position(9, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new ElPistoleiro(new Position(1, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new ElPistoleiro(new Position(8, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new Silenciador(new Position(2, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new Silenciador(new Position(7, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new Necromancer(new Position(3, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new Necromancer(new Position(6, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new PaiDeTodos(new Position(4, Math.abs(j.time))   ,j.time));
-     j.pecas.add(new PaiDeTodos(new Position(5, Math.abs(j.time))   ,j.time));
+     j.pecas.add(new Clerigo(new Position(0, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new Clerigo(new Position(9, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new ElPistoleiro(new Position(1, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new ElPistoleiro(new Position(8, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new Silenciador(new Position(2, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new Silenciador(new Position(7, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new Necromancer(new Position(3, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new Necromancer(new Position(6, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new PaiDeTodos(new Position(4, Math.abs(j.time))   ,j.time,this));
+     j.pecas.add(new PaiDeTodos(new Position(5, Math.abs(j.time))   ,j.time,this));
      
     }
     
@@ -136,9 +173,9 @@ public class Xadrez {
     for(int i=0;i<tabuleiro.SIZE*2;i++){
        
              p = jogador1.pecas.get(i);
-        tabuleiro.SetPeca(p.posicao.x, p.posicao.y, p);
+        tabuleiro.SetPeca(p.getPosition(), p);
              p = jogador2.pecas.get(i);
-        tabuleiro.SetPeca(p.posicao.x, p.posicao.y, p);
+        tabuleiro.SetPeca(p.getPosition(), p);
     }
     }
     
@@ -152,10 +189,12 @@ public class Xadrez {
                 } else {
                     window.casas_tab[x][y].setBackground(Color.BLACK);
                 }  
-                
+                window.casas_tab[x][y].setIcon(null);
                 Peca p = tabuleiro.GetPeca(x, y);
                 if(p!=null){
                      window.casas_tab[x][y].setText(p.nome);
+                     if(p.icon!=null)window.casas_tab[x][y].setIcon(p.icon);
+                     
                      if(p.time == 0) window.casas_tab[x][y].setBackground(Color.GREEN);
                      else window.casas_tab[x][y].setBackground(Color.RED);
                 }else{

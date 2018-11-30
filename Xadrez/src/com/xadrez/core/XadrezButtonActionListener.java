@@ -22,8 +22,7 @@ public class XadrezButtonActionListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        XadrezButton button = (XadrezButton)e.getSource();      
-       xadrez.CasaSelecionada(button.coord_x, button.coord_y);
+       xadrez.acao.executeAction(e);
     }
     
 }
