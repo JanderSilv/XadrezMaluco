@@ -50,8 +50,13 @@ public class Rainha extends Peca {
             last = last.Add(new MovTree(-i,-i));
         }
         
-        
-        // 3 do teclado
+      
+         // 9  do teclado
+        last=movimentacao;     
+        for(int i=0;i<10;i++){
+            last = last.Add(new MovTree(i,i));
+        }
+         // 7 do teclado
         last=movimentacao;     
         for(int i=0;i<10;i++){
             last = last.Add(new MovTree(-i,i));
