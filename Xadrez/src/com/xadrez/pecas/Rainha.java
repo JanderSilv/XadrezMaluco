@@ -48,9 +48,6 @@ public class Rainha extends Peca {
           last=movimentacao;     
         for(int i=0;i<10;i++){
             last = last.Add(new MovTree(-i,-i));
-        }
-        
-        
-        
+        }   
 }
 }   
