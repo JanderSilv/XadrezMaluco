@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import com.xadrez.core.Jogador;
 import com.xadrez.core.XadrezButton;
 import com.xadrez.estructure.Position;
+import com.xadrez.graphic.TelaCemiterio;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,18 +25,18 @@ public class NecromancerAction extends Action {
    Peca me;
    public Peca pecaRevivida;
 
-    public NecromancerAction(Xadrez x, Jogador jogador, Peca p){
+    public NecromancerAction(Xadrez x, Peca p){
         super(x);
-        this.jogador = jogador;
         me = p;
     }
 
     @Override
     public void executeAction(ActionEvent e){
-        
+   
+        jogador = (xadrez.turno%2==0)?xadrez.jogador1:xadrez.jogador2;
         boolean vazio = ((jogador.cemiterio == null) || (jogador.cemiterio.size()) == 0);
         
-        if (vazio){
+        if (vazio && pecaRevivida == null){
             
             System.out.println("Cemitério vazio, não há peças para serem revividas");
             
@@ -43,9 +45,9 @@ public class NecromancerAction extends Action {
             return;
         } else {
             
-            Peca pecas[] = xadrez.tabuleiro.GetPecasInRange(me.getPosition().x, me.getPosition().y, 1);
+           ArrayList<Peca> pecas = xadrez.tabuleiro.GetPecasInRange(me.getPosition().x, me.getPosition().y, 1);
             
-            if (pecas.length == 8){
+            if (pecas.size() == 8){
                 
                 System.out.println("Casas ocupadas, impossivel reviver");
                 
@@ -64,6 +66,9 @@ public class NecromancerAction extends Action {
                     xadrez.acao = xadrez.acaoPadrao;
                 }
                 
+            }
+            else{
+                new TelaCemiterio(xadrez.window, jogador, this);
             } 
             
         }

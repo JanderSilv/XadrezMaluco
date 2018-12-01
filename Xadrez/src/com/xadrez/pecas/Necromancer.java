@@ -5,6 +5,7 @@
  */
 package com.xadrez.pecas;
 
+import com.xadrez.actions.NecromancerAction;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
@@ -16,20 +17,20 @@ import javax.swing.ImageIcon;
  * @author Jander
  */
 public class Necromancer extends Peca {
-
+    NecromancerAction habilidade;
+    
     public Necromancer(Position posicao, int time,Xadrez xadrez) {
         super(40, "Necromancer", posicao, time,xadrez);
          if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\necromancer_azul.jpg");
         else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\necromancer_vermelho.jpg");
-        CriarMovimentacao();
+         habilidade = new NecromancerAction(xadrez, this);
+         CriarMovimentacao();
     }
 
     @Override
     public void CriarMovimentacao() {
-      movimentacao.Add(new MovTree(1, 1)).Add(new MovTree(2, 2)); // Movimentação para frente-diagonal a direita.
-      movimentacao.Add(new MovTree(-1, 1)).Add(new MovTree(-2, 2)); // Movimentação para a frente-diagonal a esquerda.
-      movimentacao.Add(new MovTree(1, -1)).Add(new MovTree(2, -2)); // Movimentação para trás-diagonal a direita.
-      movimentacao.Add(new MovTree(-1, -1)).Add(new MovTree(-2, -2)); // Movimentação para a trás-diagonal a esquerda.
+      movimentacao.Add(new MovTree(1, 1)).Add(new MovTree(2, 2)); // Movimentação para diagonal a direita.
+      movimentacao.Add(new MovTree(-1, -1)).Add(new MovTree(-2, -2)); // Movimentação para a diagonal a esquerda.
     }    
     @Override
     public MovTree getMovimentacao() {
@@ -49,6 +50,7 @@ public class Necromancer extends Peca {
     
     @Override
     public void Habilidade(){
-        
+        xadrez.acao = habilidade;
+        xadrez.acao.executeAction(null);
     }
 }
