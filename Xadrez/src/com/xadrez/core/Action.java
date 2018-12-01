@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
  */
 public abstract class Action {
     protected Xadrez xadrez;
+    
     public Action(Xadrez x){
     xadrez=x;
     }

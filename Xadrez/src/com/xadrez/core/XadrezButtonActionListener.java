@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author ruann
+ * Listener para o XadrezButton
+ * Quando o XadrezButton é clicado o método actionPerformed é chamado
  */
 public class XadrezButtonActionListener implements ActionListener {
 
@@ -22,6 +22,7 @@ public class XadrezButtonActionListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        //executa a ação que estiver setada no xadrez
        xadrez.acao.executeAction(e);
     }
     

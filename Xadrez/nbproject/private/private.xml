@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/core/XadrezButton.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/imagens/clerigo_azul.jpg</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/core/Tabuleiro.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/actions/SilenciadorAction.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/core/Peca.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/pecas/PaiDeTodos.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/pecas/ElPistoleiro.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/pecas/Peao.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/pecas/Necromancer.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/pecas/Silenciador.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/graphic/TelaXadrez.java</file>
-            <file>file:/C:/Users/ruann/Documents/NetBeansProjects/Xadrez/src/com/xadrez/core/Xadrez.java</file>
+            <file>file:/C:/Users/ruann/Documents/XadrezMaluco/Xadrez/src/com/xadrez/actions/AcaoPadrao.java</file>
         </group>
     </open-files>
 </project-private>
