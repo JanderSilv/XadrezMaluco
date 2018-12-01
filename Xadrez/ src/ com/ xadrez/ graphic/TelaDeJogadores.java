@@ -102,11 +102,14 @@ public class TelaDeJogadores extends javax.swing.JFrame {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         // TODO add your handling code here:
-        
+         if(txf_Nome_Jogador1.getText().isEmpty() || txf_Nome_Jogador2.getText().isEmpty()){
+            //JOptionPane.showMessageDialog(null, "", title, HEIGHT);
+        }else{
         Jogador j1 =new Jogador(0,txf_Nome_Jogador1.getText());
         Jogador j2 =new Jogador(9,txf_Nome_Jogador2.getText());
         new TelaXadrez(j1, j2).setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_btn_okActionPerformed
 
     /**
