@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 
 /**
- *
- * @author ruann
+ * Classe que representa a logica do xadrez em si
+ * Fica entre a TelaXadrez e o Tabuleiro
  */
 public class Xadrez {
     
@@ -56,6 +56,7 @@ public class Xadrez {
     acao=acaoPadrao;
     }
     
+    //Acão padrao a ser tomada quando o usuário seleciona uma peça
    public void CasaSelecionada(int x,int y){
    
        UpdateWindow();
@@ -67,7 +68,7 @@ public class Xadrez {
           if(p!=null && p.time == timeAtual)
           {
                pecaParaMover = p;
-               PintarCasas(tabuleiro.GetValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time));
+               PintarCasas(tabuleiro.GetValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time),Color.blue);
           }
           else
           {
@@ -81,6 +82,7 @@ public class Xadrez {
         
    }
    
+    //Responsavel por movimentação das peças
    private void ExecutaMovimentacao(int x,int y){
    if(pecaParaMover!=null)
             {
@@ -118,15 +120,17 @@ public class Xadrez {
                      
                 }
             }
-   }
+   }  
    
+    //incompleta
    private void podeUsarHabilidade(){
    Jogador j = (turno==0)? jogador1:jogador2;
    }
    
+   //Faz a mudança de turno do jogo
+   //Seleciona o personagem a jogar
    public void mudaTurno(){
     if(moveu && usouHabilidade){
-        System.out.println("mudando turno");
         turno++;
         timeAtual = (turno%2)*jogador2.time;
         window.SetPlayer((turno%2==0)? jogador1:jogador2);                       
@@ -144,13 +148,15 @@ public class Xadrez {
     }
    }
    
-   private void PintarCasas(ArrayList<Position> casas){
+   //Troca a cor das casas do tabuleiro
+   private void PintarCasas(ArrayList<Position> casas, Color cor){
       
        for(Position p:casas){
-           window.casas_tab[p.x][p.y].setBackground(Color.blue);
+           window.casas_tab[p.x][p.y].setBackground(cor);
        }
    }
    
+   //Cria objetos do tipo Peça e coloca na lista de peças do jogador
    private void GerarPecas(Jogador j){
      for(int x=0;x<tabuleiro.SIZE;x++){
         j.pecas.add(new Peao(new Position(x, Math.abs(j.time-1)) ,j.time,this));     
@@ -168,6 +174,7 @@ public class Xadrez {
      
     }
     
+   
    private void ColocarNoTabuleiro(){
      Peca p;
     for(int i=0;i<tabuleiro.SIZE*2;i++){

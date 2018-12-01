@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.xadrez.core;
 
 import com.xadrez.estructure.MovTree;
@@ -10,8 +5,7 @@ import com.xadrez.estructure.Position;
 import java.util.ArrayList;
 
 /**
- *
- * @author ruann
+ * 
  */
 public class Tabuleiro {
     
@@ -73,11 +67,6 @@ public class Tabuleiro {
         if(pecas.size()>0) return (Peca[])pecas.toArray();
         
         return null;
-    }
-    
-    public boolean LugarParavel(int x,int y,int time){
-       
-    return false;
     }
     
     public ArrayList<Position> GetValidsMoviments(MovTree m,Position from,int time){
