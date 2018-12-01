@@ -24,8 +24,8 @@ import java.util.ArrayList;
  */
 public class Xadrez {
     
-    Jogador jogador1,jogador2;
-    TelaXadrez window;
+    public Jogador jogador1,jogador2;
+    public TelaXadrez window;
     Peca pecaParaMover;
     
     public Tabuleiro tabuleiro;
@@ -87,9 +87,9 @@ public class Xadrez {
    if(pecaParaMover!=null)
             {
                 ArrayList<Position> mov_validos=tabuleiro.GetValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.time);           
+                
                 for(Position pos:mov_validos)
-                {   
-                   
+                {                      
                     if(pos.x == x && pos.y == y)
                         { 
                             
@@ -115,6 +115,7 @@ public class Xadrez {
                              UpdateWindow();
                            
                             moveu = true;
+                            break;
                           
                         }
                      

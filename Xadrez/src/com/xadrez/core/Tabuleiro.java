@@ -40,6 +40,7 @@ public class Tabuleiro {
     
     public void SetPeca(Position pos,Peca p){   
           tab[pos.x][pos.y] = p;
+          
     }
    
     public void RemovePeca(int x,int y){
@@ -50,7 +51,7 @@ public class Tabuleiro {
     tab[p.x][p.y]=null;
     }
     
-    public Peca[] GetPecasInRange(int x,int y,int range){
+    public ArrayList<Peca> GetPecasInRange(int x,int y,int range){
         
         ArrayList<Peca> pecas = new ArrayList<Peca>();
         
@@ -64,9 +65,7 @@ public class Tabuleiro {
                  }
             }
         }
-        if(pecas.size()>0) return (Peca[])pecas.toArray();
-        
-        return null;
+        return pecas;       
     }
     
     public ArrayList<Position> GetValidsMoviments(MovTree m,Position from,int time){

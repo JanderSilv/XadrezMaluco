@@ -14,5 +14,7 @@ public class Jogador {
     this.time = time;
     pecas = new ArrayList<Peca>();
     cemiterio = new ArrayList<Peca>();
+    
+  
     }
 }
