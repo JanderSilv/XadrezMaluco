@@ -1,5 +1,6 @@
 package com.xadrez.pecas;
 
+import com.xadrez.actions.PaiDeTodosAction;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
@@ -12,12 +13,13 @@ import javax.swing.ImageIcon;
  */
 
 public class PaiDeTodos extends Peca {
-
+        PaiDeTodosAction habilidade;
     public PaiDeTodos(Position posicao, int time,Xadrez xadrez) {
         super(1, "PaiDeTodos", posicao, time,xadrez);
          if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\rei_azul.jpg");
         else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\rei_vermelho.jpg");
         CriarMovimentacao();
+        habilidade = new PaiDeTodosAction(xadrez,this);
     }
 
     @Override
@@ -45,6 +47,6 @@ public class PaiDeTodos extends Peca {
     
     @Override
     public void Habilidade(){
-       
+       xadrez.acao = habilidade;
     }
 }
