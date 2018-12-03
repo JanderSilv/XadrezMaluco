@@ -8,9 +8,9 @@ package com.xadrez.graphic;
 import javax.swing.JFrame;
 
 
-public  class PopUp extends JFrame {
+public class PopUp extends JFrame {
 
-    protected JFrame sender;
+    JFrame sender;
     public PopUp(JFrame sender) {
         initComponents();
         this.sender = sender;
@@ -18,7 +18,6 @@ public  class PopUp extends JFrame {
         sender.setEnabled(false);
     
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,7 +45,6 @@ public  class PopUp extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         sender.setEnabled(true);
         sender.setAlwaysOnTop(true);
