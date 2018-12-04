@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.xadrez.actions;
 
 import com.xadrez.core.Action;
@@ -14,7 +9,6 @@ import com.xadrez.core.XadrezButton;
 import com.xadrez.estructure.Position;
 import com.xadrez.graphic.TelaCemiterio;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,7 +19,7 @@ public class NecromancerAction extends Action {
    Jogador jogador;
    Peca me;
    public Peca pecaRevivida;
-
+ ArrayList<Peca> pecas;
     public NecromancerAction(Xadrez x, Peca p){
         super(x);
         me = p;
@@ -39,33 +33,48 @@ public class NecromancerAction extends Action {
         
         if (vazio && pecaRevivida == null){
             
-            JOptionPane.showMessageDialog(null, "Cemitério vazio, não há peças para serem revividas");
+            System.out.println("Cemitério vazio, não há peças para serem revividas");
             
             xadrez.acao = xadrez.acaoPadrao;
             
             return;
         } else {
+            int val=0;
             
-           ArrayList<Peca> pecas = xadrez.tabuleiro.GetPecasInRange(me.getPosition().x, me.getPosition().y, 1);
-            
-            if (pecas.size() == 8){
-                
-                 JOptionPane.showMessageDialog(null, "Casas ocupadas, impossível reviver");
-                
-                xadrez.acao = xadrez.acaoPadrao;
-                
+          pecas = xadrez.tabuleiro.GetPecasInRange(me.getPosition().x, me.getPosition().y, 1,false);
+           
+           for(int i=0;i<pecas.size();i++){
+                if(pecas.get(i)!= null){
+                    val++;
+                }
+           }
+           
+           System.out.println(pecas.size() +"casas ao redor ");
+           System.out.println(val +"casas ocupadas ao redor ");
+           
+            if (val==pecas.size()){
+                System.out.println("Casas ocupadas, impossivel reviver");    
+                xadrez.acao = xadrez.acaoPadrao;   
+                pecas.clear();
                 return;
                 
             } else if (pecaRevivida != null) {
         
                 XadrezButton button = (XadrezButton)e.getSource(); // pega qual foi o botao q foi clicado
                 Peca lugarSelecionado = xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
+                Position mePos = me.getPosition();
                 
-                if (lugarSelecionado == null){
-                    xadrez.tabuleiro.MovePeca(button.coord_x, button.coord_y, pecaRevivida);
-                    me.coolDown = -1;
-                    xadrez.acao = xadrez.acaoPadrao;
+                if(Math.sqrt(Math.pow(button.coord_x - mePos.x, 2) + Math.pow(button.coord_y - mePos.y, 2)) <=1){
+                
+                  
+                        xadrez.tabuleiro.MovePeca(button.coord_x, button.coord_y, pecaRevivida);
+                        me.coolDown = -1;
+                        xadrez.acao = xadrez.acaoPadrao;
+                        pecas.clear();
+                    
+                
                 }
+               
                 
             }
             else{
@@ -77,5 +86,3 @@ public class NecromancerAction extends Action {
     }
     
 }
-
-// xadrez.tabuleiro.getPecasInRange

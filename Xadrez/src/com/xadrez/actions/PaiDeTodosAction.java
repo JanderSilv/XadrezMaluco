@@ -9,6 +9,7 @@ import com.xadrez.core.Action;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
+import com.xadrez.estructure.Position;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 

@@ -28,6 +28,7 @@ public class TelaCemiterio extends JFrame {
         initComponents();
         this.sender = sender;
         this.setVisible(true);
+        this.setResizable(false);
         sender.setEnabled(false);
         
         
@@ -68,7 +69,7 @@ public class TelaCemiterio extends JFrame {
         jList_cemiterio = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

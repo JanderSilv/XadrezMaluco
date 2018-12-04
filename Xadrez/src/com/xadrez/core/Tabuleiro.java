@@ -51,22 +51,37 @@ public class Tabuleiro {
     tab[p.x][p.y]=null;
     }
     
-    public ArrayList<Peca> GetPecasInRange(int x,int y,int range){
+  
+    public ArrayList<Peca> GetPecasInRange(int x,int y,int range,boolean IgnorarNulos){
         
         ArrayList<Peca> pecas = new ArrayList<Peca>();
-        
-        for(int i=x-range;i<x+range;i++){
-            for(int j=y-range;j<y+range;j++){
-                 if( (int)Math.sqrt(Math.pow(x-i, 2)+Math.pow(y-j, 2)) <=range){
-                    Peca p=GetPeca(x, y); 
-                     if(p!=null){
-                           pecas.add(p);
+      
+        for(int i=x-range;i<=x+range;i++){
+            for(int j=y-range;j<=y+range;j++){
+               
+                if(i>=0 && j>=0 && i<SIZE && j<SIZE && (x!=i || y!=j)){
+                    if( (int)Math.sqrt(Math.pow(x-i, 2)+Math.pow(y-j, 2)) <=range){   
+                       Peca p=GetPeca(i, j); 
+                       
+                       if(IgnorarNulos == true){
+                           if(p!=null){
+                             pecas.add(p);
+                          }
+                       }
+                       else{
+                             pecas.add(p);
+                       }
+
                     }
-                 }
+                }
+               
             }
         }
+       
         return pecas;       
     }
+    
+    
     
     public ArrayList<Position> GetValidsMoviments(MovTree m,Position from,int time){
     
