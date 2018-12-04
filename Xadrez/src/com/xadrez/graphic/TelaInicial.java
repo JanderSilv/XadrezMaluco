@@ -26,7 +26,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        canvasBackgrounds1.setImg(new ImageIcon("C:\\Users\\Jander\\Documents\\GitHub\\XadrezMaluco\\Xadrez\\src\\com\\xadrez\\imagens\\menu.jpg"));
+        canvasBackgrounds1.setImg(new ImageIcon("src\\com\\xadrez\\imagens\\menu.jpg"));
         canvasBackgrounds1.setMaximumSize(new java.awt.Dimension(266, 257));
         canvasBackgrounds1.setMinimumSize(new java.awt.Dimension(266, 257));
         canvasBackgrounds1.setPreferredSize(new java.awt.Dimension(266, 257));
@@ -38,14 +38,12 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        btn_creditos.setText("CREDITOS");
         btn_creditos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_creditosActionPerformed(evt);
             }
         });
 
-        btn_tutorial.setText("TUTORIAL");
         btn_tutorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_tutorialActionPerformed(evt);
@@ -56,27 +54,30 @@ public class TelaInicial extends javax.swing.JFrame {
         canvasBackgrounds1.setLayout(canvasBackgrounds1Layout);
         canvasBackgrounds1Layout.setHorizontalGroup(
             canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasBackgrounds1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_creditos))
             .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
                 .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_jogar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_tutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 119, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasBackgrounds1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_creditos, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         canvasBackgrounds1Layout.setVerticalGroup(
             canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
-                .addContainerGap(131, Short.MAX_VALUE)
-                .addComponent(btn_jogar, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addGap(121, 121, 121)
+                .addComponent(btn_jogar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_tutorial)
-                .addGap(60, 60, 60)
-                .addComponent(btn_creditos))
+                .addComponent(btn_tutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btn_creditos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         btn_jogar.setBackground(new Color(0,0,0,0));
+        btn_creditos.setBackground(new Color(0,0,0,0));
+        btn_tutorial.setBackground(new Color(0,0,0,0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

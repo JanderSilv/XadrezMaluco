@@ -41,7 +41,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        canvasBackgrounds1.setImg(new ImageIcon("C:\\Users\\Jander\\Documents\\GitHub\\XadrezMaluco\\Xadrez\\src\\com\\xadrez\\imagens\\TelaJogadores 2.jpg"));
+        canvasBackgrounds1.setImg(new ImageIcon("src\\com\\xadrez\\imagens\\TelaJogadores 2.jpg"));
 
         txf_Nome_Jogador1.setToolTipText("");
 
@@ -115,7 +115,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_okActionPerformed
    
- }//GEN-LAST:event_btn_okActionPerformed     
+ }                                           
     /**
      * @param args the command line arguments
      */

@@ -12,6 +12,7 @@ import com.xadrez.core.XadrezButton;
 import com.xadrez.estructure.Position;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author brcar
@@ -34,23 +35,24 @@ public class ClerigoAction extends Action {
           p =  xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
 
          if(p!=null){
-              System.out.println("Peca pegada");
-              System.out.println(p.nome);
+              JOptionPane.showMessageDialog(null, "Peça pega: " +p.nome);
+             
+//              System.out.println("Peca pegada");
+//              System.out.println(p.nome);
 
               for(Peca pe:pecas)
                 {
                     if(pe.getPosition().x == pe.getPosition().x && pe.getPosition().y == pe.getPosition().y){
                        p.vida += 10;
-                       me.coolDown+=4;
-                       xadrez.acao=xadrez.ACAOPADRAO;
-                       System.out.println("Peca curada");
+                       me.coolDown += 4;
+                       xadrez.acao = xadrez.acaoPadrao;
+                       JOptionPane.showMessageDialog(null, "Peca curada");
                      break;
                     }
                 }
 
-
          }else{
-             System.out.println("Espaco vazio, selecione uma peca valida");
+             JOptionPane.showMessageDialog(null, "Espaco vazio, selecione uma peca valida");
          }
 
     }
