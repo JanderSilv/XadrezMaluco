@@ -15,4 +15,8 @@ public class Position {
      this.x=x;
      this.y=y;
     }
+    public boolean Igual(Position pos){
+    if(pos.x == x && pos.y == y) return true;
+    return false;
+    }
 }

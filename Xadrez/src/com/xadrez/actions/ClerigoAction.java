@@ -29,7 +29,7 @@ public class ClerigoAction extends Action {
     @Override
     public void executeAction(ActionEvent e) {
         Position pos = me.getPosition();
-         ArrayList<Peca> pecas = xadrez.tabuleiro.GetPecasInRange(pos.x,pos.y,5);
+         ArrayList<Peca> pecas = xadrez.tabuleiro.GetPecasInRange(pos.x,pos.y,5,true);
 
          XadrezButton button = (XadrezButton)e.getSource(); 
           p =  xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
