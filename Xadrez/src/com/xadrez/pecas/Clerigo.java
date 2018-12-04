@@ -18,7 +18,7 @@ public class Clerigo extends Peca {
     
     public Clerigo(Position posicao, int time,Xadrez xadrez){
         super(40, "Clerigo", posicao, time,xadrez);
-        if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azul.png");
+        if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_vermelho.png");
         CriarMovimentacao();
     }

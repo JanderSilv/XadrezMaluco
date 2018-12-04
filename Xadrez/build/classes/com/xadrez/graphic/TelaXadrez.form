@@ -171,9 +171,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" pref="113" max="-2" attributes="0"/>
+                                      <Component id="txt_Cemiterio" min="-2" pref="113" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_Caveira" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -227,13 +227,13 @@
                       <Component id="btn_finalizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_Ajuda_Peca" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txt_Cemiterio" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txt_Caveira" min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="179" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="186" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -327,7 +327,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Ajuda_PecaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="txt_Cemiterio">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Double Feature" size="18" style="0"/>
@@ -342,7 +342,7 @@
             <Component class="javax.swing.JLabel" name="txt_Nome_Player">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="KG Blank Space Sketch" size="24" style="0"/>
+                  <Font name="Times New Roman" size="24" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NOME DO JOGADOR"/>
@@ -384,10 +384,10 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="txt_Caveira">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DesignersSkulls" size="39" style="0"/>
+                  <Font name="DesignersSkulls" size="36" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="n"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
