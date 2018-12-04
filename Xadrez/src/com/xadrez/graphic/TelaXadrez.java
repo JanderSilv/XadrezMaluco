@@ -42,10 +42,10 @@ public class TelaXadrez extends javax.swing.JFrame {
         initComponents();
         
         tpFonte = new Fontes();
-        txt_Nome_Player.setFont(tpFonte.GetFonte(tpFonte.Sketch, -1, 24));
+        txt_Nome_Player.setFont(tpFonte.GetFonte(tpFonte.Sketch, 0, 24));
         txt_Cemiterio.setFont(tpFonte.GetFonte(tpFonte.doubleFeature, 0, 18));
-        txt_Caveira.setFont(tpFonte.GetFonte(tpFonte.skulls, -1, 36));
-        lista_cemiterio.setFont(tpFonte.GetFonte(tpFonte.barbarian, -1, 18));
+        txt_Caveira.setFont(tpFonte.GetFonte(tpFonte.skulls, 0, 36));
+        lista_cemiterio.setFont(tpFonte.GetFonte(tpFonte.caveirada, 0, 10));
         
         
        

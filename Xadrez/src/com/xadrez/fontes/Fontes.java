@@ -15,7 +15,7 @@ import java.io.InputStream;
 public class Fontes {
     
     private Font fonte = null;
-    public String barbarian = "Barbarian.ttf";
+    public String caveirada = "vtkscaveirada.ttf";
     public String skulls = "Designers Skulls.TTF";
     public String doubleFeature = "DoubleFeature20.ttf";
     public String Sketch = "KGBlankSpaceSketch.ttf";
@@ -29,7 +29,7 @@ public class Fontes {
         } catch (Exception ex){
             // se der erro ao carregar a fonte.
             System.err.println(fonteNome +"Fonte não carregada");
-            fonte = new Font("TimesRoman", Font.PLAIN, 14);
+            fonte = new Font("ARIAL", Font.PLAIN, 10);
         }
         Font tp_fonte = fonte.deriveFont(estilo, tamanho);
         return tp_fonte;
