@@ -16,8 +16,8 @@ public class PaiDeTodos extends Peca {
         PaiDeTodosAction habilidade;
     public PaiDeTodos(Position posicao, int time,Xadrez xadrez) {
         super(1, "PaiDeTodos", posicao, time,xadrez);
-         if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\rei_azul.jpg");
-        else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\rei_vermelho.jpg");
+         if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_vermelho.png");
         CriarMovimentacao();
         habilidade = new PaiDeTodosAction(xadrez,this);
     }

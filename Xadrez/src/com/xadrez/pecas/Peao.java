@@ -20,8 +20,8 @@ public class Peao extends Peca {
     private boolean jaMoveu;
     public Peao(Position posicao, int time,Xadrez xadrez) {
         super(60, "Peao", posicao, time,xadrez);
-         if(time==1)icon = new ImageIcon("");
-        else icon = new ImageIcon("");
+         if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_vermelho.png");
         jaMoveu = false; 
         CriarMovimentacao();
          coolDown = -1;
