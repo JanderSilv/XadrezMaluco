@@ -21,8 +21,8 @@ public class Necromancer extends Peca {
     
     public Necromancer(Position posicao, int time,Xadrez xadrez) {
         super(40, "Necromancer", posicao, time,xadrez);
-         if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\necromancer_azul.jpg");
-        else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\necromancer_vermelho.jpg");
+         if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_vermelho.png");
          habilidade = new NecromancerAction(xadrez, this);
          CriarMovimentacao();
     }
@@ -30,7 +30,9 @@ public class Necromancer extends Peca {
     @Override
     public void CriarMovimentacao() {
       movimentacao.Add(new MovTree(1, 1)).Add(new MovTree(2, 2)); // Movimentação para diagonal a direita.
+      movimentacao.Add(new MovTree(1, -1)).Add(new MovTree(2, -2)); // Movimentação para a frente-diagonal a direita.
       movimentacao.Add(new MovTree(-1, -1)).Add(new MovTree(-2, -2)); // Movimentação para a diagonal a esquerda.
+      movimentacao.Add(new MovTree(-1, 1)).Add(new MovTree(-2, 2)); // Movimentação para a frente-diagonal a esquerda.
     }    
     @Override
     public MovTree getMovimentacao() {

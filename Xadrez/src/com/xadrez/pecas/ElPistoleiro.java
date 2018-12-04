@@ -13,8 +13,8 @@ import javax.swing.ImageIcon;
        
        public ElPistoleiro(Position posicao,int time,Xadrez xadrez){
        super(30, "ElPinstoleiro", posicao, time,xadrez);
-        if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\elPistoleiro_azul.jpg");
-        else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\elPistoleiro_vermelho.jpg");
+        if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelho.png");
        CriarMovimentacao();
        }      
     

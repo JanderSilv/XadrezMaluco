@@ -21,8 +21,8 @@ public class Silenciador extends Peca {
     
     public Silenciador(Position posicao,int time,Xadrez xadrez) {
         super(40, "Silenciador", posicao,time,xadrez);
-         if(time==1)icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\silenciador_azul.jpg");
-        else icon = new ImageIcon("C:\\Users\\ruann\\Documents\\NetBeansProjects\\Xadrez\\src\\com\\xadrez\\imagens\\silenciador_vermelho.jpg");
+         if(time==1)icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_vermelho.png");
        CriarMovimentacao();
        habilidade = new SilenciadorAction(xadrez,this);
     }
