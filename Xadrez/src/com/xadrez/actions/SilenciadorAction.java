@@ -10,6 +10,7 @@ import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,7 @@ public class SilenciadorAction extends Action{
              me.coolDown+=5;//aumenta meu coolDown
          xadrez.acao=xadrez.acaoPadrao;//faz o jogo sair do estado de habilidade (OBRIGATÓRIO)
          }else{
-             System.out.println("Espaco vazio, selecione uma peca valida");
+             JOptionPane.showMessageDialog(null, "Espaco vazio, selecione uma peça valida");
          }
          
     }

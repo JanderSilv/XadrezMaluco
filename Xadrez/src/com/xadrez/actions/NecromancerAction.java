@@ -50,7 +50,7 @@ public class NecromancerAction extends Action {
             
             if (pecas.size() == 8){
                 
-                 JOptionPane.showMessageDialog(null, "Casas ocupadas, impossivel reviver");
+                 JOptionPane.showMessageDialog(null, "Casas ocupadas, impossível reviver");
                 
                 xadrez.acao = xadrez.acaoPadrao;
                 

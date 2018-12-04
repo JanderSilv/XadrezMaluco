@@ -10,6 +10,7 @@ import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +38,7 @@ public class PaiDeTodosAction extends Action {
           
          }else{
              
-             System.out.println("O espaço contem uma peca, selecione uma peca valida");
+            JOptionPane.showMessageDialog(null, "O espaço contem uma peca, selecione uma peca valida");
             
          }
     }
