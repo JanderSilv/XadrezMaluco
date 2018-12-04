@@ -6,6 +6,7 @@
 package com.xadrez.pecas;
 
 import com.xadrez.core.Peca;
+import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
 import com.xadrez.estructure.Position;
 /**
@@ -14,8 +15,8 @@ import com.xadrez.estructure.Position;
  */
 public class Rainha extends Peca {
     
-    public Rainha(Position posicao, int time){
-        super(40, "Rainha", posicao, time);
+    public Rainha(Position posicao, int time,Xadrez xadrez){
+        super(40, "Rainha", posicao, time,xadrez);
         CriarMovimentacao();
     }
     
@@ -63,4 +64,20 @@ public class Rainha extends Peca {
         }
         
 }
+
+    @Override
+    public void setPosition(int x, int y) {
+        posicao.x = x;
+        posicao.y = y;
+    }
+
+    @Override
+    public Position getPosition() {
+      return posicao;
+    }
+
+    @Override
+    public MovTree getMovimentacao() {
+       return movimentacao;
+    }
 }   
