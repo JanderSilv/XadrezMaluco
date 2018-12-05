@@ -9,6 +9,7 @@ import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
 import com.xadrez.estructure.Position;
+import javax.swing.ImageIcon;
 /**
  *
  * @author brcar
@@ -17,6 +18,8 @@ public class Rainha extends Peca {
     
     public Rainha(Position posicao, int time,Xadrez xadrez){
         super(40, "Rainha", posicao, time,xadrez);
+         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\rainha_azul.png");
+        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\rainha_vermelho.png");
         CriarMovimentacao();
     }
     

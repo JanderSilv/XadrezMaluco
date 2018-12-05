@@ -52,7 +52,7 @@ public class Necromancer extends Peca {
     
     @Override
     public void Habilidade(){
-        xadrez.acao = habilidade;
-        xadrez.acao.executeAction(null);
+        xadrez.MudarFluxo(habilidade);
+        xadrez.getAction().executeAction(null);
     }
 }

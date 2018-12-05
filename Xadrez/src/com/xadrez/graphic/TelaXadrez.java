@@ -12,6 +12,7 @@ import com.xadrez.core.XadrezButton;
 import com.xadrez.core.XadrezButtonActionListener;
 import com.xadrez.fontes.Fontes;
 import java.awt.Color;
+import java.util.ArrayList;
 import static javax.security.auth.callback.ConfirmationCallback.YES;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -87,8 +88,8 @@ public class TelaXadrez extends javax.swing.JFrame {
     public void SetPlayer(Jogador j){
     txt_Nome_Player.setText(j.nome);
     DefaultListModel listModel = new DefaultListModel();
-    
-    for(Peca p:j.cemiterio){
+    ArrayList<Peca> cemiterio = j.getCemiterio(); 
+    for(Peca p:cemiterio){
         listModel.addElement(p.nome);
     }
    lista_cemiterio.setModel(listModel);
@@ -100,11 +101,12 @@ public class TelaXadrez extends javax.swing.JFrame {
         txt_Nome_Peca.setText("");
         txt_Vida_Peca.setText("");
         txt_Habilidade_Peca.setText("");
+        btn_ImgPeca.setIcon(null);
         btn_Ativar_Habilidade.setEnabled(false);
     }else{    
         txt_Nome_Peca.setText(p.nome);
         txt_Vida_Peca.setText(String.valueOf(p.vida));
-        
+         btn_ImgPeca.setIcon(p.icon);
         if(p.coolDown == -1){
         txt_Habilidade_Peca.setText("não tem");
         btn_Ativar_Habilidade.setEnabled(false);
@@ -117,12 +119,15 @@ public class TelaXadrez extends javax.swing.JFrame {
         txt_Habilidade_Peca.setText("espere "+String.valueOf(p.coolDown)+" turnos");
          btn_Ativar_Habilidade.setEnabled(false);
         }
-        if(p.time != xadrez.timeAtual){
+        if(p.time != xadrez.getTimeAtual()){
          btn_Ativar_Habilidade.setEnabled(false);
         }
      }
     }
     
+    public void SetMensagemUsuario(String texto){
+       txt_MensagemUsuario.setText(texto);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -131,7 +136,7 @@ public class TelaXadrez extends javax.swing.JFrame {
         btn_Nova_Partida = new javax.swing.JButton();
         panel_Tabuleiro = new javax.swing.JPanel();
         panel_Controle = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_ImgPeca = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txt_Nome_Peca = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -146,6 +151,7 @@ public class TelaXadrez extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lista_cemiterio = new javax.swing.JList<>();
         txt_Caveira = new javax.swing.JLabel();
+        txt_MensagemUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,14 +189,13 @@ public class TelaXadrez extends javax.swing.JFrame {
         panel_Controle.setBackground(new java.awt.Color(204, 204, 204));
         panel_Controle.setForeground(new java.awt.Color(153, 153, 153));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("IMAGEM");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setDefaultCapable(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
+        btn_ImgPeca.setBackground(new java.awt.Color(255, 255, 255));
+        btn_ImgPeca.setBorder(null);
+        btn_ImgPeca.setBorderPainted(false);
+        btn_ImgPeca.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_ImgPeca.setDefaultCapable(false);
+        btn_ImgPeca.setFocusPainted(false);
+        btn_ImgPeca.setFocusable(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/xadrez/imagens/infoPeca_Nome.png"))); // NOI18N
@@ -304,7 +309,7 @@ public class TelaXadrez extends javax.swing.JFrame {
                                     .addComponent(btn_Ajuda_Peca, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panel_ControleLayout.createSequentialGroup()
                                 .addGap(72, 72, 72)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btn_ImgPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -314,7 +319,7 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(txt_Nome_Player)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_ImgPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panel_ControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -342,6 +347,9 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txt_MensagemUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_MensagemUsuario.setText("MENSAGEM PARA USUARIO");
+
         javax.swing.GroupLayout canvasBackgrounds1Layout = new javax.swing.GroupLayout(canvasBackgrounds1);
         canvasBackgrounds1.setLayout(canvasBackgrounds1Layout);
         canvasBackgrounds1Layout.setHorizontalGroup(
@@ -356,13 +364,17 @@ public class TelaXadrez extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
                         .addComponent(btn_Nova_Partida)
+                        .addGap(220, 220, 220)
+                        .addComponent(txt_MensagemUsuario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         canvasBackgrounds1Layout.setVerticalGroup(
             canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_Nova_Partida)
+                .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_Nova_Partida)
+                    .addComponent(txt_MensagemUsuario))
                 .addGap(18, 18, 18)
                 .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_Tabuleiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -428,9 +440,9 @@ public class TelaXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     private void btn_Ativar_HabilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ativar_HabilidadeActionPerformed
-        if(xadrez.pecaEmSelecao.coolDown==0){
+        if(xadrez.getPecaEmSelecao().coolDown==0){
             xadrez.usouHabilidade = true;
-            xadrez.pecaEmSelecao.Habilidade();
+            xadrez.getPecaEmSelecao().Habilidade();
             xadrez.mudaTurno();
         }
     }//GEN-LAST:event_btn_Ativar_HabilidadeActionPerformed
@@ -444,10 +456,10 @@ public class TelaXadrez extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ajuda_Peca;
     private javax.swing.JButton btn_Ativar_Habilidade;
+    private javax.swing.JButton btn_ImgPeca;
     private javax.swing.JButton btn_Nova_Partida;
     private javax.swing.JButton btn_finalizar;
     private com.xadrez.graphic.CanvasBackgrounds canvasBackgrounds1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -458,6 +470,7 @@ public class TelaXadrez extends javax.swing.JFrame {
     private javax.swing.JLabel txt_Caveira;
     private javax.swing.JLabel txt_Cemiterio;
     private javax.swing.JLabel txt_Habilidade_Peca;
+    private javax.swing.JLabel txt_MensagemUsuario;
     private javax.swing.JLabel txt_Nome_Peca;
     private javax.swing.JLabel txt_Nome_Player;
     private javax.swing.JLabel txt_Vida_Peca;

@@ -23,7 +23,7 @@ public class XadrezButtonActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //executa a ação que estiver setada no xadrez
-       xadrez.acao.executeAction(e);
+        xadrez.getAction().executeAction(e);
     }
     
 }

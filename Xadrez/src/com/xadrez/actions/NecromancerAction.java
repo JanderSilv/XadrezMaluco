@@ -16,10 +16,11 @@ import java.util.ArrayList;
  */
 public class NecromancerAction extends Action {
     
-   Jogador jogador;
-   Peca me;
-   public Peca pecaRevivida;
- ArrayList<Peca> pecas;
+    Jogador jogador;
+    Peca me;
+    public Peca pecaRevivida;
+    ArrayList<Peca> pecas;
+    
     public NecromancerAction(Xadrez x, Peca p){
         super(x);
         me = p;
@@ -28,20 +29,21 @@ public class NecromancerAction extends Action {
     @Override
     public void executeAction(ActionEvent e){
    
-        jogador = (xadrez.turno%2==0)?xadrez.jogador1:xadrez.jogador2;
-        boolean vazio = ((jogador.cemiterio == null) || (jogador.cemiterio.size()) == 0);
+        jogador = xadrez.getJogadorAtual();
+        ArrayList<Peca> cemiterio = jogador.getCemiterio();
+        boolean vazio = ((cemiterio == null) || (cemiterio.size()) == 0);
         
         if (vazio && pecaRevivida == null){
             
             System.out.println("Cemitério vazio, não há peças para serem revividas");
             
-            xadrez.acao = xadrez.acaoPadrao;
+           xadrez.RestaurarFluxo();
             
             return;
         } else {
             int val=0;
             
-          pecas = xadrez.tabuleiro.GetPecasInRange(me.getPosition().x, me.getPosition().y, 1,false);
+          pecas = xadrez.getPecasInRange(me.getPosition(), 1,false);
            
            for(int i=0;i<pecas.size();i++){
                 if(pecas.get(i)!= null){
@@ -54,22 +56,22 @@ public class NecromancerAction extends Action {
            
             if (val==pecas.size()){
                 System.out.println("Casas ocupadas, impossivel reviver");    
-                xadrez.acao = xadrez.acaoPadrao;   
+                xadrez.RestaurarFluxo();
                 pecas.clear();
                 return;
                 
             } else if (pecaRevivida != null) {
         
                 XadrezButton button = (XadrezButton)e.getSource(); // pega qual foi o botao q foi clicado
-                Peca lugarSelecionado = xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
+                Peca lugarSelecionado = xadrez.getPeca(button.coord_x, button.coord_y);
                 Position mePos = me.getPosition();
                 
                 if(Math.sqrt(Math.pow(button.coord_x - mePos.x, 2) + Math.pow(button.coord_y - mePos.y, 2)) <=1){
                 
                   
-                        xadrez.tabuleiro.MovePeca(button.coord_x, button.coord_y, pecaRevivida);
+                        xadrez.movePeca(button.coord_x, button.coord_y, pecaRevivida);
                         me.coolDown = -1;
-                        xadrez.acao = xadrez.acaoPadrao;
+                      xadrez.RestaurarFluxo();
                         pecas.clear();
                     
                 
@@ -78,7 +80,7 @@ public class NecromancerAction extends Action {
                 
             }
             else{
-                new TelaCemiterio(xadrez.window, jogador, this);
+                new TelaCemiterio(xadrez.getWindow(), jogador, this);
             } 
             
         }

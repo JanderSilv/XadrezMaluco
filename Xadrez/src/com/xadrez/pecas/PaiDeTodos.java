@@ -47,6 +47,6 @@ public class PaiDeTodos extends Peca {
     
     @Override
     public void Habilidade(){
-       xadrez.acao = habilidade;
+         xadrez.MudarFluxo(habilidade);
     }
 }

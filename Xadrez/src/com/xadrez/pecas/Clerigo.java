@@ -5,6 +5,7 @@
  */
 package com.xadrez.pecas;
 
+import com.xadrez.actions.ClerigoAction;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
@@ -15,11 +16,12 @@ import javax.swing.ImageIcon;
  * @author brcar
  */
 public class Clerigo extends Peca {
-    
+    ClerigoAction habilidade;
     public Clerigo(Position posicao, int time,Xadrez xadrez){
         super(40, "Clerigo", posicao, time,xadrez);
         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_vermelho.png");
+        habilidade = new ClerigoAction(xadrez, this);
         CriarMovimentacao();
     }
     
@@ -49,6 +51,6 @@ public class Clerigo extends Peca {
     
     @Override
     public void Habilidade(){
-        
+        xadrez.MudarFluxo(habilidade);
     }
 }
