@@ -1,5 +1,6 @@
 package com.xadrez.pecas;
 
+import com.xadrez.actions.ElPistoleiroAction;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
@@ -10,12 +11,13 @@ import javax.swing.ImageIcon;
  * @author JegueNu
  */
  public class ElPistoleiro extends Peca{
-       
+       ElPistoleiroAction habilidade;
        public ElPistoleiro(Position posicao,int time,Xadrez xadrez){
        super(30, "ElPinstoleiro", posicao, time,xadrez);
         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelho.png");
        CriarMovimentacao();
+       habilidade= new ElPistoleiroAction(xadrez, this);
        }      
     
     @Override
@@ -43,6 +45,6 @@ import javax.swing.ImageIcon;
     
     @Override
     public void Habilidade(){
-    System.out.println("Habilidade de "+nome);
+        xadrez.MudarFluxo(habilidade);
     }
  }

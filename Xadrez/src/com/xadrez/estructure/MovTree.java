@@ -17,6 +17,7 @@ public class MovTree {
    public Position value;
    boolean paravel = true;
    
+   
    public MovTree(){
    path = new ArrayList<MovTree>();
    }
