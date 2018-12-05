@@ -8,6 +8,7 @@ package com.xadrez.graphic;
 import com.xadrez.actions.NecromancerAction;
 import com.xadrez.core.Jogador;
 import com.xadrez.core.Peca;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
@@ -26,6 +27,7 @@ public class TelaCemiterio extends JFrame {
     Peca selecionada;
     public TelaCemiterio(JFrame sender,Jogador jogador,NecromancerAction actionNecro) {
         initComponents();
+        ArrayList<Peca> cemiterio = jogador.getCemiterio();
         this.sender = sender;
         this.setVisible(true);
         this.setResizable(false);
@@ -33,7 +35,7 @@ public class TelaCemiterio extends JFrame {
         
         
          DefaultListModel listModel = new DefaultListModel();
-         for(Peca p:jogador.cemiterio){
+         for(Peca p:cemiterio){
             listModel.addElement(p.nome);
          }
          jList_cemiterio.setModel(listModel);
@@ -42,8 +44,8 @@ public class TelaCemiterio extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                if (!e.getValueIsAdjusting()) {
                    int i=jList_cemiterio.getSelectedIndex();
-                   actionNecro.pecaRevivida = jogador.cemiterio.get(i);
-                   jogador.cemiterio.remove(i);
+                   actionNecro.pecaRevivida = cemiterio.get(i);
+                   cemiterio.remove(i);
                    System.out.println(i);
                    Close();
                    dispose();

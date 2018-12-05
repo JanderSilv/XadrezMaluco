@@ -11,12 +11,13 @@ public abstract class Peca {
     public int time;
     public int vida;
     public String nome;
+    public int coolDown;
     
     public ImageIcon icon;
     protected Position posicao;
     protected MovTree movimentacao;
     protected Xadrez xadrez;
-    public int coolDown;
+    
     
     public Peca(int vida, String nome,Position posicao,int time,Xadrez xadrez) {
       id=this.hashCode();
@@ -28,7 +29,7 @@ public abstract class Peca {
       movimentacao = new MovTree(null);
       this.xadrez = xadrez;
     }
-   
+    
      public abstract void setPosition(int x,int y);
      public abstract Position getPosition();
      public abstract MovTree getMovimentacao();

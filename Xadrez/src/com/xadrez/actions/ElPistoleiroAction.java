@@ -24,13 +24,13 @@ public class ElPistoleiroAction extends Action{
     @Override
     public void executeAction(ActionEvent e) {
        Position pos = peca.getPosition();
-       Peca esq = xadrez.tabuleiro.GetPeca(pos.x-1, pos.y);
-       Peca dir = xadrez.tabuleiro.GetPeca(pos.x+1, pos.y);
+       Peca esq = xadrez.getPeca(pos.x-1, pos.y);
+       Peca dir = xadrez.getPeca(pos.x+1, pos.y);
        if(esq!=null && dir!=null){
            esq.vida -= 20;
            dir.vida -= 20;
            peca.coolDown += 5;
-           xadrez.acao=xadrez.acaoPadrao;
+           xadrez.RestaurarFluxo();
        }
        
     }

@@ -9,7 +9,6 @@ import com.xadrez.core.Action;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
-import com.xadrez.estructure.Position;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
@@ -28,14 +27,14 @@ public class PaiDeTodosAction extends Action {
     @Override
     public void executeAction(ActionEvent e) {
         XadrezButton button = (XadrezButton)e.getSource();
-         Peca P=xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
+         Peca P=xadrez.getPeca(button.coord_x, button.coord_y);
          
          if(null==P){//verifica se onde o usuario clicou  está vazio
-          xadrez.tabuleiro.RemovePeca(p.getPosition());
-          xadrez.tabuleiro.MovePeca(button.coord_x, button.coord_y,p);
+          xadrez.removePeca(p.getPosition());
+          xadrez.movePeca(button.coord_x, button.coord_y,p);
           p.coolDown+=6;
           xadrez.moveu=true;
-          xadrez.acao=xadrez.acaoPadrao;//faz o jogo sair do estado de habilidade (OBRIGATÓRIO)
+          xadrez.RestaurarFluxo();//faz o jogo sair do estado de habilidade (OBRIGATÓRIO)
           
          }else{
              

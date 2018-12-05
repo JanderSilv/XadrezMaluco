@@ -29,10 +29,10 @@ public class ClerigoAction extends Action {
     @Override
     public void executeAction(ActionEvent e) {
         Position pos = me.getPosition();
-         ArrayList<Peca> pecas = xadrez.tabuleiro.GetPecasInRange(pos.x,pos.y,5,true);
+         ArrayList<Peca> pecas = xadrez.getPecasInRange(pos.x,pos.y,5,true);
 
          XadrezButton button = (XadrezButton)e.getSource(); 
-          p =  xadrez.tabuleiro.GetPeca(button.coord_x, button.coord_y);
+          p =  xadrez.getPeca(button.coord_x, button.coord_y);
 
          if(p!=null){
               JOptionPane.showMessageDialog(null, "Peça pega: " +p.nome);
@@ -42,10 +42,10 @@ public class ClerigoAction extends Action {
 
               for(Peca pe:pecas)
                 {
-                    if(pe.getPosition().x == pe.getPosition().x && pe.getPosition().y == pe.getPosition().y){
+                    if(p.getPosition().Igual(pe.getPosition())){
                        p.vida += 10;
                        me.coolDown += 4;
-                       xadrez.acao = xadrez.acaoPadrao;
+                       xadrez.RestaurarFluxo();
                        JOptionPane.showMessageDialog(null, "Peca curada");
                      break;
                     }

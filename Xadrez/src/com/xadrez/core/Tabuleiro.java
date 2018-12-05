@@ -11,48 +11,42 @@ public class Tabuleiro {
     
     public final int SIZE = 10;
     
-    public Peca[][] tab;
+    private Peca[][] tab;
        
     public Tabuleiro(){
          tab = new Peca[SIZE][SIZE];
     }
    
-    public Peca GetPeca(int x,int y){
-        if(IsInBounds(x, y)){
+    public Peca getPeca(int x,int y){
+        if(isInBounds(x, y)){
             return tab[x][y];
         }
         return null;
     }
     
-    public boolean IsInBounds(int x,int y){
+    public boolean isInBounds(int x,int y){
     if(x<0 || y<0 || x>=SIZE || y>=SIZE) return false;
     return true;
     }
     
-    public boolean IsFree(int x,int y){
-       return (IsInBounds(x,y) && GetPeca(x, y)==null);
+    public boolean isFree(int x,int y){
+       return (isInBounds(x,y) && getPeca(x, y)==null);
     }
     
-    public void MovePeca(int x,int y,Peca p){
+    public void movePeca(int x,int y,Peca p){
           p.setPosition(x, y);
           tab[x][y] = p;
     }
     
-    public void SetPeca(Position pos,Peca p){   
-          tab[pos.x][pos.y] = p;
-          
+    public void setPeca(Position pos,Peca p){   
+          tab[pos.x][pos.y] = p;       
     }
    
-    public void RemovePeca(int x,int y){
+    public void removePeca(int x,int y){
     tab[x][y]=null;
     }
-    
-    public void RemovePeca(Position p){
-    tab[p.x][p.y]=null;
-    }
-    
-  
-    public ArrayList<Peca> GetPecasInRange(int x,int y,int range,boolean IgnorarNulos){
+      
+    public ArrayList<Peca> getPecasInRange(int x,int y,int range,boolean IgnorarNulos){
         
         ArrayList<Peca> pecas = new ArrayList<Peca>();
       
@@ -61,7 +55,7 @@ public class Tabuleiro {
                
                 if(i>=0 && j>=0 && i<SIZE && j<SIZE && (x!=i || y!=j)){
                     if( (int)Math.sqrt(Math.pow(x-i, 2)+Math.pow(y-j, 2)) <=range){   
-                       Peca p=GetPeca(i, j); 
+                       Peca p=getPeca(i, j); 
                        
                        if(IgnorarNulos == true){
                            if(p!=null){
@@ -81,9 +75,7 @@ public class Tabuleiro {
         return pecas;       
     }
     
-    
-    
-    public ArrayList<Position> GetValidsMoviments(MovTree m,Position from,int time){
+    public ArrayList<Position> getValidsMoviments(MovTree m,Position from,int time){
     
         ArrayList<Position> pos = new ArrayList<Position>();
         
@@ -101,7 +93,7 @@ public class Tabuleiro {
                  }
                 int x= m.value.x+from.x;
                 int y= mvy+from.y;
-                Peca p =GetPeca(x, y);
+                Peca p =getPeca(x, y);
                
                 if(p!=null){
                  if((m.IsParavel()==false) || (m.IsParavel() && p.time == time)) break;
@@ -113,7 +105,7 @@ public class Tabuleiro {
                 }
                 
             }
-            ArrayList<Position> aux = GetValidsMoviments(m.Get(i),from,time);
+            ArrayList<Position> aux = getValidsMoviments(m.Get(i),from,time);
             if(aux.size()>0)
             {
                 pos.addAll(aux);
@@ -131,9 +123,9 @@ public class Tabuleiro {
                 int y= mvy+from.y;
                  
                  if(m.IsParavel()){                   
-                    if(IsInBounds(x,y))
+                    if(isInBounds(x,y))
                     {
-                        Peca p = GetPeca(x,y);
+                        Peca p = getPeca(x,y);
                         if(p==null){
                             pos.add(new Position(x, y));
                         }
