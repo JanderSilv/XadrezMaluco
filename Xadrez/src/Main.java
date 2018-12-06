@@ -44,7 +44,7 @@ public class Main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Audio.playSound("playback.wav",true);
+               // Audio.playSound("playback.wav",true);
                 new TelaInicial().setVisible(true);
             }
         });

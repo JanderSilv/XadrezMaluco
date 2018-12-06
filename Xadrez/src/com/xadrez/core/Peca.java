@@ -14,6 +14,7 @@ public abstract class Peca {
     public int coolDown;
     
     public ImageIcon icon;
+    public ImageIcon iconGrande;
     protected Position posicao;
     protected MovTree movimentacao;
     protected Xadrez xadrez;
@@ -35,4 +36,7 @@ public abstract class Peca {
      public abstract MovTree getMovimentacao();
      public abstract void CriarMovimentacao();
      public void Habilidade(){}
+     public void Atualizacao(){
+     
+     }
 }

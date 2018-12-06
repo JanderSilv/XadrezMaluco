@@ -162,6 +162,7 @@ public class Xadrez {
                  jogador1.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
+             p.Atualizacao();
          }
          for(Peca p:j2_Pecas){
              if(p.coolDown>0) {p.coolDown--;}
@@ -169,9 +170,11 @@ public class Xadrez {
                  jogador2.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
+              p.Atualizacao();
          }
    
    }
+   
    //Troca a cor das casas do tabuleiro
    private void PintarCasas(ArrayList<Position> casas, Color cor){
       
@@ -190,7 +193,7 @@ public class Xadrez {
      for(int x=0;x<tabuleiro.SIZE;x++){
        pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
      }
-     pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
+    /* pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
      pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
      pecas.add(new ElPistoleiro(new Position(1, Math.abs(time))   ,time,this));
      pecas.add(new ElPistoleiro(new Position(8, Math.abs(time))   ,time,this));
@@ -200,7 +203,7 @@ public class Xadrez {
      pecas.add(new Necromancer(new Position(6, Math.abs(time))   ,time,this));
      pecas.add(new PaiDeTodos(new Position(4, Math.abs(time))   ,time,this));
      pecas.add(new Rainha(new Position(5, Math.abs(time))   ,time,this));
-     
+     */
     }
     
    //Coloca as peças dos jogadores no tabuleiro (obs: independente se já há outra peça no local)
@@ -209,7 +212,7 @@ public class Xadrez {
       ArrayList<Peca> j1_Pecas =jogador1.getPecas();
       ArrayList<Peca> j2_Pecas =jogador2.getPecas();
     
-      for(int i=0;i<tabuleiro.SIZE*2;i++){
+      for(int i=0;i<tabuleiro.SIZE;i++){
        
              p = j1_Pecas.get(i);
         tabuleiro.setPeca(p.getPosition(), p);
@@ -219,7 +222,7 @@ public class Xadrez {
     }
     
    //Atualiza a janela
-   private void UpdateWindow(){
+   public void UpdateWindow(){
        for(int x=0;x<tabuleiro.SIZE;x++){
             for(int y=0;y<tabuleiro.SIZE;y++){
             
@@ -267,6 +270,10 @@ public class Xadrez {
    //Move uma peça e atualiza suas coordenadas internas
    public void movePeca(int x,int y,Peca p){
     tabuleiro.movePeca(x, y, p);
+   }
+   
+   public void setPeca(Peca p){
+   tabuleiro.setPeca(p.getPosition(), p);
    }
    
    //Remove uma peça do tabuleiro
@@ -320,5 +327,9 @@ public class Xadrez {
    return acao;
    }
    
+   //Retorna o tamanho do tabuleiro
+   public int getTabuleiroTam(){
+   return tabuleiro.SIZE;
+   }
 
 }

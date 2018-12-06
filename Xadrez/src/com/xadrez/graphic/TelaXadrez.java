@@ -49,7 +49,7 @@ public class TelaXadrez extends javax.swing.JFrame {
         txt_Cemiterio.setFont(tpFonte.GetFonte(tpFonte.doubleFeature, 0, 18));
         txt_Caveira.setFont(tpFonte.GetFonte(tpFonte.skulls, 0, 36));
         lista_cemiterio.setFont(tpFonte.GetFonte(tpFonte.caveirada, 0, 10));
-        
+         btn_Ativar_Habilidade.setEnabled(false);
         
        
         GerarTab();
@@ -108,7 +108,7 @@ public class TelaXadrez extends javax.swing.JFrame {
     }else{    
         txt_Nome_Peca.setText(p.nome);
         txt_Vida_Peca.setText(String.valueOf(p.vida));
-         btn_ImgPeca.setIcon(p.icon);
+         btn_ImgPeca.setIcon(p.iconGrande);
         if(p.coolDown == -1){
         txt_Habilidade_Peca.setText("não tem");
         btn_Ativar_Habilidade.setEnabled(false);

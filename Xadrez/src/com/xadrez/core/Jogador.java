@@ -42,5 +42,12 @@ public class Jogador {
         pecas.remove(p);
         cemiterio.add(p);
     }
+    public void RemovePeca(Peca p){
+     pecas.remove(p);
+    }
+    
+    public void AdcionarPeca(Peca p){
+    pecas.add(p);
+   }
   
 }

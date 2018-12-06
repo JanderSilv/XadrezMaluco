@@ -61,8 +61,8 @@ public class TelaCemiterio extends JFrame {
     }
 
     public void Close(){
-    sender.setEnabled(true);
-        sender.setAlwaysOnTop(true);
+      sender.setEnabled(true);
+      sender.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
