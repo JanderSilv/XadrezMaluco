@@ -5,11 +5,13 @@
  */
 package com.xadrez.pecas;
 
+import com.xadrez.actions.TransformPeaoAction;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
 import com.xadrez.estructure.MovTree;
 import com.xadrez.estructure.Position;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,15 +20,25 @@ import javax.swing.ImageIcon;
 public class Peao extends Peca {
 
     private boolean jaMoveu;
+    
     public Peao(Position posicao, int time,Xadrez xadrez) {
         super(60, "Peao", posicao, time,xadrez);
-         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_vermelho.png");
+         if(time==0){
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azul.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azulGrande.png");
+         }
+         else{
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_vermelho.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\peao_vermelhoGrande.png");
+             
+         }
         jaMoveu = false; 
         CriarMovimentacao();
          coolDown = -1;
     }
 
+    
+    
     @Override
     public void CriarMovimentacao() {
        movimentacao.Add(new MovTree(0, 1,true,false,true)).Add(new MovTree(0, 2,true,false,true));
@@ -55,6 +67,12 @@ public class Peao extends Peca {
     public Position getPosition() {
        return posicao;
     }
-    
+   @Override
+   public void Atualizacao(){
+    if((time==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (time!=0 && posicao.y==0)){
+        xadrez.MudarFluxo(new TransformPeaoAction(posicao, time, xadrez, this));
+        xadrez.getAction().executeAction(null);
+    }
+   }
    
 }
