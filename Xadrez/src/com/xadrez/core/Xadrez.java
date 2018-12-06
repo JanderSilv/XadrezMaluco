@@ -49,7 +49,7 @@ public class Xadrez {
     jogador1 = j1;
     jogador2 = j2;
     this.window = window;
-    Audio.playSound("playback.wav",true);
+   
     GerarPecas(jogador1);
     GerarPecas(jogador2);
     ColocarNoTabuleiro();
@@ -105,11 +105,11 @@ public class Xadrez {
                                 
                                 if(timeAtual==0){ 
                                     jogador2.MatarPeca(inimigaAchada);  
-                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaEmSelecao.nome);
+                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaParaMover.nome);
                                 }
                                 else{
                                     jogador1.MatarPeca(inimigaAchada);
-                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaEmSelecao.nome);
+                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaParaMover.nome);
                                 }
                           
                             }

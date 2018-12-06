@@ -77,7 +77,7 @@ public class Tabuleiro {
     
     public ArrayList<Position> getValidsMoviments(MovTree m,Position from,int time){
     
-        ArrayList<Position> pos = new ArrayList<Position>();
+        ArrayList<Position> pos = new ArrayList<>();
         
         if(m==null || from == null) return null;
            
@@ -93,12 +93,13 @@ public class Tabuleiro {
                  }
                 int x= m.value.x+from.x;
                 int y= mvy+from.y;
+                
                 Peca p =getPeca(x, y);
-               
+                
                 if(p!=null){
-                 if((m.IsParavel()==false) || (m.IsParavel() && p.time == time)) break;
+                 if((m.IsParavel()==false) || (m.IsParavel() && p.time == time) || m.MoveApenas()==true) break;
                  
-                 if(m.IsParavel() && p.time!=time){
+                 if(m.IsParavel() && p.time!=time && m.MoveApenas() == false ){
                     pos.add(new Position(x, y));
                     break;
                  }
@@ -115,23 +116,24 @@ public class Tabuleiro {
             if(m.value!=null)
              {
                  int mvy =m.value.y;  
-                if(time>0)
+                 if(time>0)
                  {
                      mvy*=-1;
                  }
-                int x= m.value.x+from.x;
-                int y= mvy+from.y;
+                 int x= m.value.x+from.x;
+                 int y= mvy+from.y;
                  
                  if(m.IsParavel()){                   
                     if(isInBounds(x,y))
                     {
                         Peca p = getPeca(x,y);
+                        
                         if(p==null){
-                            pos.add(new Position(x, y));
+                            if(m.AtaqueApenas()==false) pos.add(new Position(x, y));
                         }
                         else if(p.time != time)
                         {
-                             pos.add(new Position(x, y));
+                            if(m.MoveApenas()==false) pos.add(new Position(x, y));
                         }
                     } 
                  }

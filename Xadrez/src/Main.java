@@ -2,6 +2,7 @@
 
 
 
+import com.xadrez.audio.Audio;
 import com.xadrez.graphic.TelaInicial;
 
 /*
@@ -43,6 +44,7 @@ public class Main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 Audio.playSound("playback.wav",true);
                 new TelaInicial().setVisible(true);
             }
         });
