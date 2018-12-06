@@ -45,6 +45,12 @@ public class Tabuleiro {
     public void removePeca(int x,int y){
     tab[x][y]=null;
     }
+    public void removePeca(Peca p){
+        removePeca(p.getPosition());
+    }
+    public void removePeca(Position p){
+    tab[p.x][p.y]=null;
+    }
       
     public ArrayList<Peca> getPecasInRange(int x,int y,int range,boolean IgnorarNulos){
         

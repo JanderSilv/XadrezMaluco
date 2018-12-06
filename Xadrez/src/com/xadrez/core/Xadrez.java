@@ -17,6 +17,7 @@ import com.xadrez.pecas.Rainha;
 import com.xadrez.pecas.Silenciador;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 
@@ -138,10 +139,16 @@ public class Xadrez {
         window.SetMensagemUsuario(getJogadorAtual().nome+" é sua vez!");
         moveu = false;
         usouHabilidade = false;
-        UpdateWindow();
         
         AtualizarPecas();
-       
+        UpdateWindow();
+        
+        if(jogador1.getPecas().size()==0){
+            JOptionPane.showMessageDialog(null,"Jogador 1 perdeu");
+        }
+        if(jogador2.getPecas().size()==0){
+            JOptionPane.showMessageDialog(null,"Jogador 2 perdeu");
+        }
     }
    }
    
@@ -151,11 +158,17 @@ public class Xadrez {
         
          for(Peca p:j1_Pecas){
              if(p.coolDown>0){ p.coolDown--;}
-             if(p.vida<=0)jogador1.MatarPeca(p);
+             if(p.vida<=0){
+                 jogador1.MatarPeca(p);
+                 tabuleiro.removePeca(p);
+             }
          }
          for(Peca p:j2_Pecas){
              if(p.coolDown>0) {p.coolDown--;}
-             if(p.vida<=0)jogador2.MatarPeca(p);
+             if(p.vida<=0){
+                 jogador2.MatarPeca(p);
+                 tabuleiro.removePeca(p);
+             }
          }
    
    }
@@ -175,7 +188,7 @@ public class Xadrez {
          ArrayList<Peca> pecas =j.getPecas();
          int time = j.getTime();
      for(int x=0;x<tabuleiro.SIZE;x++){
-        pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
+       pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
      }
      pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
      pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
