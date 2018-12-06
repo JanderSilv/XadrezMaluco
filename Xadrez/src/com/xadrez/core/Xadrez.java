@@ -6,7 +6,6 @@
 package com.xadrez.core;
 
 import com.xadrez.actions.AcaoPadrao;
-import com.xadrez.audio.Audio;
 import com.xadrez.estructure.Position;
 import com.xadrez.graphic.TelaXadrez;
 import com.xadrez.pecas.Clerigo;
@@ -49,7 +48,6 @@ public class Xadrez {
     jogador1 = j1;
     jogador2 = j2;
     this.window = window;
-    Audio.playSound("playback.wav",true);
     GerarPecas(jogador1);
     GerarPecas(jogador2);
     ColocarNoTabuleiro();

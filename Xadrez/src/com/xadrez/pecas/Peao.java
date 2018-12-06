@@ -29,14 +29,16 @@ public class Peao extends Peca {
 
     @Override
     public void CriarMovimentacao() {
-        
-        movimentacao.Add(new MovTree(0, 1)).Add(new MovTree(0, 2));
+       movimentacao.Add(new MovTree(0, 1,true,false,true)).Add(new MovTree(0, 2,true,false,true));
+       
     }
     @Override
     public MovTree getMovimentacao() {
         if(jaMoveu){          
-            movimentacao = new MovTree(null);
-            movimentacao.Add(new MovTree(0, 1));   
+            movimentacao =  new MovTree(null,true,false,true);
+            movimentacao.Add(new MovTree(0, 1,true,false,true));  
+            movimentacao.Add(new MovTree(-1, 1,true,true,false));
+            movimentacao.Add(new MovTree(1, 1,true,true,false));
         }
         return movimentacao;
     }
