@@ -66,7 +66,7 @@ public class NecromancerAction extends Action {
                 Peca lugarSelecionado = xadrez.getPeca(button.coord_x, button.coord_y);
                 Position mePos = me.getPosition();
                 
-                if(Math.sqrt(Math.pow(button.coord_x - mePos.x, 2) + Math.pow(button.coord_y - mePos.y, 2)) <=1){
+                if(Math.sqrt(Math.pow(button.coord_x - mePos.x, 2) + Math.pow(button.coord_y - mePos.y, 2)) <=1.5f){
                 
                   
                         xadrez.movePeca(button.coord_x, button.coord_y, pecaRevivida);
