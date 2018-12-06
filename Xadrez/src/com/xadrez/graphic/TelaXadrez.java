@@ -42,7 +42,6 @@ public class TelaXadrez extends javax.swing.JFrame {
         this.jogador2=jogador2;
        
         initComponents();
-        
         setIcon();
                 
         tpFonte = new Fontes();
@@ -399,7 +398,7 @@ public class TelaXadrez extends javax.swing.JFrame {
             .addComponent(canvasBackgrounds1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
         );
 
-        this.setLocation(300,100);
+        this.setLocation(300,50);
         this.setResizable(false);
 
         pack();

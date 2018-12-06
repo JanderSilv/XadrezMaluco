@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class TelaInicial extends javax.swing.JFrame {
 
     public TelaInicial() {
-        this.setLocation(550,300);
+        this.setLocation(550,200);
         this.setResizable(false);
         initComponents();
         setIcon();

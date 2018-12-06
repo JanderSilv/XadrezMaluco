@@ -8,6 +8,8 @@ package com.xadrez.graphic;
 import com.xadrez.actions.NecromancerAction;
 import com.xadrez.core.Jogador;
 import com.xadrez.core.Peca;
+import com.xadrez.fontes.Fontes;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -23,6 +25,7 @@ public class TelaCemiterio extends JFrame {
     /**
      * Creates new form TelaCemiterio
      */
+    Fontes tpFonte;
     JFrame sender;
     Peca selecionada;
     public TelaCemiterio(JFrame sender,Jogador jogador,NecromancerAction actionNecro) {
@@ -32,7 +35,10 @@ public class TelaCemiterio extends JFrame {
         this.setVisible(true);
         this.setResizable(false);
         sender.setEnabled(false);
+        setIcon();
         
+        tpFonte = new Fontes();
+        txt_Cemiterio.setFont(tpFonte.GetFonte(tpFonte.doubleFeature, 0, 24));
         
          DefaultListModel listModel = new DefaultListModel();
          for(Peca p:cemiterio){
@@ -69,7 +75,7 @@ public class TelaCemiterio extends JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jList_cemiterio = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        txt_Cemiterio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,29 +91,28 @@ public class TelaCemiterio extends JFrame {
         });
         jScrollPane1.setViewportView(jList_cemiterio);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("CEMITÉRIO");
+        txt_Cemiterio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txt_Cemiterio.setText("CEMITÉRIO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1)))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt_Cemiterio, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(31, 31, 31)
+                .addComponent(txt_Cemiterio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -120,8 +125,12 @@ public class TelaCemiterio extends JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList_cemiterio;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel txt_Cemiterio;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+    }
 }

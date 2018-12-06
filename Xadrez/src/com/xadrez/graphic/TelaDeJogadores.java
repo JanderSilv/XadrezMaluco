@@ -20,7 +20,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
      * Creates new form TelaDeJogadores
      */
     public TelaDeJogadores() {
-        this.setLocation(550,300);
+        this.setLocation(550,200);
         this.setResizable(false);
         initComponents();
         setIcon();
