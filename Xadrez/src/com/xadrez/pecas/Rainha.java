@@ -26,48 +26,15 @@ public class Rainha extends Peca {
     @Override
     public void CriarMovimentacao() {
        
-        MovTree last=movimentacao;     
-        //cima
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(0,i));
-        }
-        //baixo
-         last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(0,-i));
-        }
-        
-         //direita
-         last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(i,0));
-        }
-        
-        //esquerda
-         last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(-i,0));
-        }
-        // 1 do teclado 
-          last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(-i,-i));
-        }
-        
-      
-         // 9  do teclado
-        last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(i,i));
-        }
-         // 7 do teclado
-        last=movimentacao;     
-        for(int i=0;i<10;i++){
-            last = last.Add(new MovTree(-i,i));
-        }
-        
-}
-
+        movimentacao.Add(new MovTree(0, 1)).Add(new MovTree(0, 2)).Add(new MovTree(0, 3)).Add(new MovTree(0, 4)).Add(new MovTree(0, 5)).Add(new MovTree(0, 6)).Add(new MovTree(0, 7)).Add(new MovTree(0, 8)).Add(new MovTree(0, 9)).Add(new MovTree(0, 10));
+        movimentacao.Add(new MovTree(0, -1)).Add(new MovTree(0, -2)).Add(new MovTree(0, -3)).Add(new MovTree(0, -4)).Add(new MovTree(0, -5)).Add(new MovTree(0, -6)).Add(new MovTree(0, -7)).Add(new MovTree(0, -8)).Add(new MovTree(0, -9)).Add(new MovTree(0, -10));
+        movimentacao.Add(new MovTree(1,1)).Add(new MovTree(2,2)).Add(new MovTree(3,3)).Add(new MovTree(4,4)).Add(new MovTree(5,5)).Add(new MovTree(6,6)).Add(new MovTree(7,7)).Add(new MovTree(8,8)).Add(new MovTree(9,9)).Add(new MovTree(10,10));
+        movimentacao.Add(new MovTree(-1,-1)).Add(new MovTree(-2,-2)).Add(new MovTree(-3,-3)).Add(new MovTree(-4,-4)).Add(new MovTree(-5,-5)).Add(new MovTree(-6,-6)).Add(new MovTree(-7,-7)).Add(new MovTree(-8,-8)).Add(new MovTree(-9,-9)).Add(new MovTree(-10,-10));
+        movimentacao.Add(new MovTree(-1,1)).Add(new MovTree(-2,2)).Add(new MovTree(-3,3)).Add(new MovTree(-4,4)).Add(new MovTree(-5,5)).Add(new MovTree(-6,6)).Add(new MovTree(-7,7)).Add(new MovTree(-8,8)).Add(new MovTree(-9,9)).Add(new MovTree(-10,10));
+        movimentacao.Add(new MovTree(1,-1)).Add(new MovTree(2,-2)).Add(new MovTree(3,-3)).Add(new MovTree(4,-4)).Add(new MovTree(5,-5)).Add(new MovTree(6,-6)).Add(new MovTree(7,-7)).Add(new MovTree(8,-8)).Add(new MovTree(9,-9)).Add(new MovTree(10,-10));
+        movimentacao.Add(new MovTree(1,0)).Add(new MovTree(2,0)).Add(new MovTree(3,0)).Add(new MovTree(4,0)).Add(new MovTree(5,0)).Add(new MovTree(6,0)).Add(new MovTree(7,0)).Add(new MovTree(8,0)).Add(new MovTree(9,0)).Add(new MovTree(10,0));
+        movimentacao.Add(new MovTree(-1,0)).Add(new MovTree(-2,0)).Add(new MovTree(-3,0)).Add(new MovTree(-4,0)).Add(new MovTree(-5,0)).Add(new MovTree(-6,0)).Add(new MovTree(-7,0)).Add(new MovTree(-8,0)).Add(new MovTree(-9,0)).Add(new MovTree(-10,0));
+    }    
     @Override
     public void setPosition(int x, int y) {
         posicao.x = x;
