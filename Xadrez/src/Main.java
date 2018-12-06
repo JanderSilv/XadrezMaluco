@@ -11,10 +11,7 @@ import com.xadrez.graphic.TelaInicial;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author ruann
- */
+
 public class Main {
 
      public static void main(String args[]) {

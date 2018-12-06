@@ -45,7 +45,7 @@ public class TelaCemiterio extends JFrame {
         
          DefaultListModel listModel = new DefaultListModel();
          for(Peca p:cemiterio){
-            listModel.addElement(p.nome);
+            listModel.addElement(p.getNome());
          }
          lista_cemiterio.setModel(listModel);
         lista_cemiterio.addListSelectionListener(new ListSelectionListener() {

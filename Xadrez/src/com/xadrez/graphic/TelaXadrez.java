@@ -92,7 +92,7 @@ public class TelaXadrez extends javax.swing.JFrame {
     DefaultListModel listModel = new DefaultListModel();
     ArrayList<Peca> cemiterio = j.getCemiterio(); 
     for(Peca p:cemiterio){
-        listModel.addElement(p.nome);
+        listModel.addElement(p.getNome());
     }
    lista_cemiterio.setModel(listModel);
    
@@ -106,22 +106,22 @@ public class TelaXadrez extends javax.swing.JFrame {
         btn_ImgPeca.setIcon(null);
         btn_Ativar_Habilidade.setEnabled(false);
     }else{    
-        txt_Nome_Peca.setText(p.nome);
-        txt_Vida_Peca.setText(String.valueOf(p.vida));
+        txt_Nome_Peca.setText(p.getNome());
+        txt_Vida_Peca.setText(String.valueOf(p.getTime()));
         btn_ImgPeca.setIcon(p.iconGrande);
-        if(p.coolDown == -1){
+        if(p.getCoolDown()==-1){
         txt_Habilidade_Peca.setText("não tem");
         btn_Ativar_Habilidade.setEnabled(false);
         }
-        else if(p.coolDown==0){
+        else if(p.getCoolDown()==0){
          txt_Habilidade_Peca.setText("disponível");
          btn_Ativar_Habilidade.setEnabled(true);
         }
         else{
-        txt_Habilidade_Peca.setText("espere "+String.valueOf(p.coolDown)+" turnos");
+        txt_Habilidade_Peca.setText("espere "+String.valueOf(p.getCoolDown())+" turnos");
          btn_Ativar_Habilidade.setEnabled(false);
         }
-        if(p.time != xadrez.getTimeAtual()){
+        if(p.getTime() != xadrez.getTimeAtual()){
          btn_Ativar_Habilidade.setEnabled(false);
         }
      }
@@ -447,7 +447,7 @@ public class TelaXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     private void btn_Ativar_HabilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ativar_HabilidadeActionPerformed
-        if(xadrez.getPecaEmSelecao().coolDown==0){
+        if(xadrez.getPecaEmSelecao().getCoolDown()==0){
             xadrez.usouHabilidade = true;
             xadrez.getPecaEmSelecao().Habilidade();
             xadrez.mudaTurno();

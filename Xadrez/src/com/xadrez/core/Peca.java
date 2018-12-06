@@ -6,12 +6,62 @@ import com.xadrez.estructure.Position;
 import javax.swing.ImageIcon;
 
 public abstract class Peca {
+
+   
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    
+    public int getVida() {
+        return vida;
+    }
+
+    
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    
+    public String getNome() {
+        return nome;
+    }
+
+ 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
+    public int getCoolDown() {
+        return coolDown;
+    }
+
+  
+    public void setCoolDown(int coolDown) {
+        this.coolDown = coolDown;
+    }
+    
+    public void atualizaCoolDown(int valor){
+       this.coolDown+=valor;
+    }
+    
+    public void Curar(int valor){
+        this.vida+=valor;
+    }
+    public void Dano(int valor){
+        this.vida-=valor;
+    }
     
     public int id;
-    public int time;
-    public int vida;
-    public String nome;
-    public int coolDown;
+    protected int time;
+    protected int vida;
+    protected String nome;
+    protected int coolDown;
     public int direcao;
     
     public ImageIcon icon;
@@ -48,12 +98,12 @@ public abstract class Peca {
          
       
          if(indo){
-            if((time==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (time!=0 && posicao.y==0)){
+            if((getTime()==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (getTime()!=0 && posicao.y==0)){
                direcao*=-1;
               indo = false;
             }
          }else{
-          if((time==0 && posicao.y == 0) || (time!=0 && posicao.y==xadrez.getTabuleiroTam()-1)){
+          if((getTime()==0 && posicao.y == 0) || (getTime()!=0 && posicao.y==xadrez.getTabuleiroTam()-1)){
                direcao*=-1;
               indo = true;
             }

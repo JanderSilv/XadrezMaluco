@@ -5,6 +5,7 @@
  */
 package com.xadrez.actions;
 
+import com.xadrez.audio.Audio;
 import com.xadrez.core.Action;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
@@ -35,7 +36,7 @@ public class ClerigoAction extends Action {
           p =  xadrez.getPeca(button.coord_x, button.coord_y);
 
          if(p!=null){
-              JOptionPane.showMessageDialog(null, "Peça pega: " +p.nome);
+              JOptionPane.showMessageDialog(null, "Peça escolhida: " +p.getNome());
              
 //              System.out.println("Peca pegada");
 //              System.out.println(p.nome);
@@ -43,8 +44,9 @@ public class ClerigoAction extends Action {
               for(Peca pe:pecas)
                 {
                     if(p.getPosition().Igual(pe.getPosition())){
-                       p.vida += 10;
-                       me.coolDown += 4;
+                       p.Curar(10);
+                        Audio.playSound("Clerigo.wav", false);
+                       me.atualizaCoolDown(4);
                        xadrez.RestaurarFluxo();
                        JOptionPane.showMessageDialog(null, "Peca curada");
                      break;

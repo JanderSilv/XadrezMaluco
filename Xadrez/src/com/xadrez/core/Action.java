@@ -7,10 +7,7 @@ package com.xadrez.core;
 
 import java.awt.event.ActionEvent;
 
-/**
- *
- * @author ruann
- */
+
 public abstract class Action {
     protected Xadrez xadrez;
     

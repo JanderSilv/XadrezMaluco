@@ -20,7 +20,7 @@ public class Necromancer extends Peca {
     NecromancerAction habilidade;
     
     public Necromancer(Position posicao, int time,Xadrez xadrez) {
-        super(40, "Necromancer", posicao, time,xadrez);
+        super(25, "Necromancer", posicao, time,xadrez);
          if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_vermelho.png");
          habilidade = new NecromancerAction(xadrez, this);

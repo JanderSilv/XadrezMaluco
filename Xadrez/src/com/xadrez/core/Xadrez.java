@@ -7,6 +7,7 @@ package com.xadrez.core;
 
 import com.xadrez.actions.AcaoPadrao;
 import com.xadrez.estructure.Position;
+import com.xadrez.graphic.TelaFimDeJogo;
 import com.xadrez.graphic.TelaXadrez;
 import com.xadrez.pecas.Clerigo;
 import com.xadrez.pecas.ElPistoleiro;
@@ -69,10 +70,10 @@ public class Xadrez {
      
        if(!moveu)
        {
-          if(p!=null && p.time == timeAtual)
+          if(p!=null && p.getTime() == timeAtual)
           {
                pecaParaMover = p;
-               PintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time,p.direcao),Color.blue);
+               PintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.getTime(),p.direcao),Color.blue);
                PintarCasa(new Position(x, y), Color.yellow);
           }
           else
@@ -91,7 +92,7 @@ public class Xadrez {
    private void ExecutaMovimentacao(int x,int y){
    if(pecaParaMover!=null)
             {
-                ArrayList<Position> mov_validos=tabuleiro.getValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.time,pecaParaMover.direcao);           
+                ArrayList<Position> mov_validos=tabuleiro.getValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.getTime(),pecaParaMover.direcao);           
                 
                 for(Position pos:mov_validos)
                 {                      
@@ -104,11 +105,11 @@ public class Xadrez {
                                 
                                 if(timeAtual==0){ 
                                     jogador2.MatarPeca(inimigaAchada);  
-                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaParaMover.nome);
+                                     window.SetMensagemUsuario(inimigaAchada.getNome() +" foi morta por "+pecaParaMover.getNome());
                                 }
                                 else{
                                     jogador1.MatarPeca(inimigaAchada);
-                                     window.SetMensagemUsuario(inimigaAchada.nome +" foi morta por "+pecaParaMover.nome);
+                                     window.SetMensagemUsuario(inimigaAchada.getNome() +" foi morta por "+pecaParaMover.getNome());
                                 }
                           
                             }
@@ -144,10 +145,12 @@ public class Xadrez {
         UpdateWindow();
         
         if(jogador1.getPecas().size()==0){
-            JOptionPane.showMessageDialog(null,"Jogador 1 perdeu");
+            new TelaFimDeJogo(jogador2);
+            window.dispose();
         }
         if(jogador2.getPecas().size()==0){
-            JOptionPane.showMessageDialog(null,"Jogador 2 perdeu");
+            new TelaFimDeJogo(jogador1);
+            window.dispose();
         }
     }
    }
@@ -157,16 +160,16 @@ public class Xadrez {
         ArrayList<Peca> j2_Pecas =jogador2.getPecas();
         
          for(Peca p:j1_Pecas){
-             if(p.coolDown>0){ p.coolDown--;}
-             if(p.vida<=0){
+             if(p.getCoolDown()>0){ p.atualizaCoolDown(-1);}
+             if(p.getVida()<=0){
                  jogador1.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
              p.Atualizacao();
          }
          for(Peca p:j2_Pecas){
-             if(p.coolDown>0) {p.coolDown--;}
-             if(p.vida<=0){
+             if(p.getCoolDown()>0) {p.atualizaCoolDown(-1);}
+             if(p.getVida()<=0){
                  jogador2.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
@@ -190,7 +193,7 @@ public class Xadrez {
          ArrayList<Peca> pecas =j.getPecas();
          int time = j.getTime();
      for(int x=0;x<tabuleiro.SIZE;x++){
-       pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
+     //  pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
      }
      pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
      pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
@@ -211,7 +214,7 @@ public class Xadrez {
       ArrayList<Peca> j1_Pecas =jogador1.getPecas();
       ArrayList<Peca> j2_Pecas =jogador2.getPecas();
     
-      for(int i=0;i<tabuleiro.SIZE*2;i++){
+      for(int i=0;i<tabuleiro.SIZE;i++){
        
              p = j1_Pecas.get(i);
         tabuleiro.setPeca(p.getPosition(), p);
@@ -234,10 +237,10 @@ public class Xadrez {
                 getWindow().casas_tab[x][y].setIcon(null);
                 Peca p = tabuleiro.getPeca(x, y);
                 if(p!=null){
-                     getWindow().casas_tab[x][y].setText(p.nome);
+                     getWindow().casas_tab[x][y].setText(p.getNome());
                      if(p.icon!=null)getWindow().casas_tab[x][y].setIcon(p.icon);
                      
-                     if(p.time == 0) getWindow().casas_tab[x][y].setBackground(Color.GREEN);
+                     if(p.getTime() == 0) getWindow().casas_tab[x][y].setBackground(Color.GREEN);
                      else getWindow().casas_tab[x][y].setBackground(Color.RED);
                 }else{
                     getWindow().casas_tab[x][y].setText("");    

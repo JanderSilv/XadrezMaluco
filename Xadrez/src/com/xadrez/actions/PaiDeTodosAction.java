@@ -5,6 +5,7 @@
  */
 package com.xadrez.actions;
 
+import com.xadrez.audio.Audio;
 import com.xadrez.core.Action;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jafe Ferreira
+ * @author Jafe
  */
 public class PaiDeTodosAction extends Action {
     Peca p;
@@ -32,7 +33,8 @@ public class PaiDeTodosAction extends Action {
          if(null==P){//verifica se onde o usuario clicou  está vazio
           xadrez.removePeca(p.getPosition());
           xadrez.movePeca(button.coord_x, button.coord_y,p);
-          p.coolDown+=6;
+             Audio.playSound("PaiDeTodos.wav", false);
+          p.atualizaCoolDown(10);         
           xadrez.moveu=true;
           xadrez.RestaurarFluxo();//faz o jogo sair do estado de habilidade (OBRIGATÓRIO)
           

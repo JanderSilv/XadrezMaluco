@@ -15,10 +15,7 @@ import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
-/**
- *
- * @author ruann
- */
+
 public class Audio {
         public static synchronized void playSound(final String url,boolean loop) {
     new Thread(new Runnable() { // the wrapper thread is unnecessary, unless it blocks on the Clip finishing, see comments

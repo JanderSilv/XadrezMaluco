@@ -103,9 +103,9 @@ public class Tabuleiro {
                 Peca p =getPeca(x, y);
                 
                 if(p!=null){
-                 if((m.IsParavel()==false) || (m.IsParavel() && p.time == time) || m.MoveApenas()==true) break;
+                 if((m.IsParavel()==false) || (m.IsParavel() && p.getTime() == time) || m.MoveApenas()==true) break;
                  
-                 if(m.IsParavel() && p.time!=time && m.MoveApenas() == false ){
+                 if(m.IsParavel() && p.getTime()!=time && m.MoveApenas() == false ){
                     pos.add(new Position(x, y));
                     break;
                  }
@@ -137,7 +137,7 @@ public class Tabuleiro {
                         if(p==null){
                             if(m.AtaqueApenas()==false) pos.add(new Position(x, y));
                         }
-                        else if(p.time != time)
+                        else if(p.getTime() != time)
                         {
                             if(m.MoveApenas()==false) pos.add(new Position(x, y));
                         }

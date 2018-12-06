@@ -22,7 +22,7 @@ public class Peao extends Peca {
     private boolean jaMoveu;
     
     public Peao(Position posicao, int time,Xadrez xadrez) {
-        super(60, "Peao", posicao, time,xadrez);
+        super(35, "Peao", posicao, time,xadrez);
          if(time==0){
              icon = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azul.png");
              iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\peao_azulGrande.png");

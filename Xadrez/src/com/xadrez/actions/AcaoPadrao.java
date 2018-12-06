@@ -10,10 +10,7 @@ import com.xadrez.core.Xadrez;
 import com.xadrez.core.XadrezButton;
 import java.awt.event.ActionEvent;
 
-/**
- *
- * @author ruann
- */
+
 public class AcaoPadrao extends Action{
 
     

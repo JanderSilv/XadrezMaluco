@@ -1,5 +1,6 @@
 package com.xadrez.actions;
 
+import com.xadrez.audio.Audio;
 import com.xadrez.core.Action;
 import com.xadrez.core.Peca;
 import com.xadrez.core.Xadrez;
@@ -71,7 +72,8 @@ public class NecromancerAction extends Action {
                 
                   
                         xadrez.movePeca(button.coord_x, button.coord_y, pecaRevivida);
-                        me.coolDown = -1;
+                           Audio.playSound("Necromancer.wav", false);
+                        me.setCoolDown(-1);
                       xadrez.RestaurarFluxo();
                         pecas.clear();
                     

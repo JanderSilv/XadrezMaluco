@@ -17,7 +17,8 @@ import javax.swing.ImageIcon;
 public class Rainha extends Peca {
     
     public Rainha(Position posicao, int time,Xadrez xadrez){
-        super(40, "Rainha", posicao, time,xadrez);
+        super(20, "Rainha", posicao, time,xadrez);
+        coolDown=-1;
          if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\rainha_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\rainha_vermelho.png");
         CriarMovimentacao();
