@@ -93,10 +93,9 @@ public class Tabuleiro {
         {
             if(m.value!=null){
                 int mvy =m.value.y;  
-                if(time>0)
-                 {
-                     mvy*=direcao;
-                 }
+               
+                mvy*=direcao;
+                 
                 int x= m.value.x+from.x;
                 int y= mvy+from.y;
                 
@@ -122,10 +121,9 @@ public class Tabuleiro {
             if(m.value!=null)
              {
                  int mvy =m.value.y;  
-                 if(time>0)
-                 {
-                     mvy*=-1;
-                 }
+                
+                 mvy*=direcao;
+                 
                  int x= m.value.x+from.x;
                  int y= mvy+from.y;
                  

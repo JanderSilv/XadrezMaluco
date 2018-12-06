@@ -192,16 +192,15 @@ public class Xadrez {
      for(int x=0;x<tabuleiro.SIZE;x++){
        pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
      }
-     pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
-     pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
-     pecas.add(new ElPistoleiro(new Position(1, Math.abs(time))   ,time,this));
-     pecas.add(new ElPistoleiro(new Position(8, Math.abs(time))   ,time,this));
-     pecas.add(new Silenciador(new Position(2, Math.abs(time))   ,time,this));
-     pecas.add(new Silenciador(new Position(7, Math.abs(time))   ,time,this));
-     pecas.add(new Necromancer(new Position(3, Math.abs(time))   ,time,this));
-     pecas.add(new Necromancer(new Position(6, Math.abs(time))   ,time,this));
-     pecas.add(new PaiDeTodos(new Position(4, Math.abs(time))   ,time,this));
-     pecas.add(new Rainha(new Position(5, Math.abs(time))   ,time,this));
+    // pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
+    // pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
+   //  pecas.add(new ElPistoleiro(new Position(1, Math.abs(time))   ,time,this));
+    // pecas.add(new ElPistoleiro(new Position(8, Math.abs(time))   ,time,this));
+   //  pecas.add(new Silenciador(new Position(2, Math.abs(time))   ,time,this));
+   // / pecas.add(new Necromancer(new Position(3, Math.abs(time))   ,time,this));
+   //  pecas.add(new Necromancer(new Position(6, Math.abs(time))   ,time,this));
+  //   pecas.add(new PaiDeTodos(new Position(4, Math.abs(time))   ,time,this));
+   //  pecas.add(new Rainha(new Position(5, Math.abs(time))   ,time,this));
      
     }
     
@@ -211,7 +210,7 @@ public class Xadrez {
       ArrayList<Peca> j1_Pecas =jogador1.getPecas();
       ArrayList<Peca> j2_Pecas =jogador2.getPecas();
     
-      for(int i=0;i<tabuleiro.SIZE*2;i++){
+      for(int i=0;i<tabuleiro.SIZE;i++){
        
              p = j1_Pecas.get(i);
         tabuleiro.setPeca(p.getPosition(), p);

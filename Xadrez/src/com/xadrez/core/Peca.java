@@ -20,9 +20,7 @@ public abstract class Peca {
     protected MovTree movimentacao;
     protected Xadrez xadrez;
     
-    private boolean indo;
- 
-    
+  
     public Peca(int vida, String nome,Position posicao,int time,Xadrez xadrez) {
       id=this.hashCode();
       this.time = time;
@@ -32,7 +30,7 @@ public abstract class Peca {
       this.coolDown = 0;
       movimentacao = new MovTree(null);
       this.xadrez = xadrez;
-      indo= true;
+     
       if(time==0)direcao=1;
       else direcao = -1;
     
@@ -43,22 +41,6 @@ public abstract class Peca {
      public abstract MovTree getMovimentacao();
      public abstract void CriarMovimentacao();
      public void Habilidade(){}
-     
-     public void Atualizacao(){
-         
-      
-         if(indo){
-            if((time==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (time!=0 && posicao.y==0)){
-               direcao*=-1;
-              indo = false;
-            }
-         }else{
-          if((time==0 && posicao.y == 0) || (time!=0 && posicao.y==xadrez.getTabuleiroTam()-1)){
-               direcao*=-1;
-              indo = true;
-            }
-         
-         }     
-       
-     }
+     public void Girar(){direcao*=-1;}
+     public void Atualizacao(){}
 }
