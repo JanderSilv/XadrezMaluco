@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  public class ElPistoleiro extends Peca{
        ElPistoleiroAction habilidade;
        public ElPistoleiro(Position posicao,int time,Xadrez xadrez){
-       super(30, "ElPinstoleiro", posicao, time,xadrez);
+       super(30, "ElPistoleiro", posicao, time,xadrez);
         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azul.png");
         else icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelho.png");
        CriarMovimentacao();
