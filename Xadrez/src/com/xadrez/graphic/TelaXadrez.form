@@ -182,14 +182,6 @@
                                       <Component id="jScrollPane1" min="-2" pref="164" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btn_Ativar_Habilidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btn_finalizar" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="btn_Ajuda_Peca" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                                       <Component id="btn_ImgPeca" min="-2" pref="88" max="-2" attributes="0"/>
                                   </Group>
@@ -198,6 +190,15 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btn_finalizar" max="32767" attributes="0"/>
+                          <Component id="btn_Ativar_Habilidade" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Ajuda_Peca" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -223,19 +224,19 @@
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_Habilidade_Peca" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_Ativar_Habilidade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="btn_finalizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_Ajuda_Peca" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="txt_Cemiterio" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="txt_Caveira" min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="186" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="185" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

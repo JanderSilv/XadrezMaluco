@@ -9,6 +9,7 @@ import com.xadrez.core.XadrezButton;
 import com.xadrez.estructure.Position;
 import com.xadrez.graphic.TelaCemiterio;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +36,7 @@ public class NecromancerAction extends Action {
         
         if (vazio && pecaRevivida == null){
             
-            System.out.println("Cemitério vazio, não há peças para serem revividas");
+            JOptionPane.showMessageDialog(null, "Cemitério vazio, não há peças para serem revividas");
             
            xadrez.RestaurarFluxo();
             
@@ -55,7 +56,7 @@ public class NecromancerAction extends Action {
            System.out.println(val +"casas ocupadas ao redor ");
            
             if (val==pecas.size()){
-                System.out.println("Casas ocupadas, impossivel reviver");    
+                JOptionPane.showMessageDialog(null, "Casas ocupadas, impossível reviver");    
                 xadrez.RestaurarFluxo();
                 pecas.clear();
                 return;
