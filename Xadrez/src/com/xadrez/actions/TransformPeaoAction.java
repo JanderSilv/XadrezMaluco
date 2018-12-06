@@ -67,9 +67,11 @@ public class TransformPeaoAction extends Action {
                 peca = new Silenciador(pos, time, xadrez);
                 break;  
            }
+            peca.Girar();
            xadrez.getJogadorAtual().AdcionarPeca(peca);
            xadrez.setPeca(peca);
            xadrez.RestaurarFluxo();
+           xadrez.UpdateWindow();
           
        }
     }

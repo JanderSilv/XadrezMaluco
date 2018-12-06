@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class Peao extends Peca {
 
     private boolean jaMoveu;
-    
+    private boolean transf;
     public Peao(Position posicao, int time,Xadrez xadrez) {
         super(60, "Peao", posicao, time,xadrez);
          if(time==0){
@@ -32,7 +32,7 @@ public class Peao extends Peca {
              iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\peao_vermelhoGrande.png");
              
          }
-        jaMoveu = false; 
+        jaMoveu =transf= false; 
         CriarMovimentacao();
          coolDown = -1;
     }
@@ -69,10 +69,15 @@ public class Peao extends Peca {
     }
    @Override
    public void Atualizacao(){
-    if((time==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (time!=0 && posicao.y==0)){
+       if(!transf){
+           if((time==0 && posicao.y == xadrez.getTabuleiroTam()-1) || (time!=0 && posicao.y==0)){
         xadrez.MudarFluxo(new TransformPeaoAction(posicao, time, xadrez, this));
-        xadrez.getAction().executeAction(null);
+        xadrez.UpdateWindow();
+        transf = true;
+         }
+        }
+       
     }
-   }
+    
    
 }
