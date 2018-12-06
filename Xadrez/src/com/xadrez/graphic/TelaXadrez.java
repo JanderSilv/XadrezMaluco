@@ -108,7 +108,7 @@ public class TelaXadrez extends javax.swing.JFrame {
     }else{    
         txt_Nome_Peca.setText(p.nome);
         txt_Vida_Peca.setText(String.valueOf(p.vida));
-         btn_ImgPeca.setIcon(p.icon);
+        btn_ImgPeca.setIcon(p.icon);
         if(p.coolDown == -1){
         txt_Habilidade_Peca.setText("não tem");
         btn_Ativar_Habilidade.setEnabled(false);
@@ -197,6 +197,9 @@ public class TelaXadrez extends javax.swing.JFrame {
         btn_ImgPeca.setDefaultCapable(false);
         btn_ImgPeca.setFocusPainted(false);
         btn_ImgPeca.setFocusable(false);
+        btn_ImgPeca.setMaximumSize(new java.awt.Dimension(88, 85));
+        btn_ImgPeca.setMinimumSize(new java.awt.Dimension(88, 85));
+        btn_ImgPeca.setPreferredSize(new java.awt.Dimension(88, 85));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/xadrez/imagens/infoPeca_Nome.png"))); // NOI18N
@@ -221,6 +224,7 @@ public class TelaXadrez extends javax.swing.JFrame {
 
         btn_Ativar_Habilidade.setText("Ativar Habilidade");
         btn_Ativar_Habilidade.setBorderPainted(false);
+        btn_Ativar_Habilidade.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Ativar_Habilidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Ativar_HabilidadeActionPerformed(evt);
@@ -245,6 +249,7 @@ public class TelaXadrez extends javax.swing.JFrame {
         txt_Nome_Player.setText("NOME DO JOGADOR");
 
         btn_finalizar.setText("Finalizar Jogada");
+        btn_finalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_finalizarActionPerformed(evt);
