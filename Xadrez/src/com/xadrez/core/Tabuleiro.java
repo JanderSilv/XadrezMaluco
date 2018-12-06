@@ -81,7 +81,7 @@ public class Tabuleiro {
         return pecas;       
     }
     
-    public ArrayList<Position> getValidsMoviments(MovTree m,Position from,int time){
+    public ArrayList<Position> getValidsMoviments(MovTree m,Position from,int time,int direcao){
     
         ArrayList<Position> pos = new ArrayList<>();
         
@@ -95,7 +95,7 @@ public class Tabuleiro {
                 int mvy =m.value.y;  
                 if(time>0)
                  {
-                     mvy*=-1;
+                     mvy*=direcao;
                  }
                 int x= m.value.x+from.x;
                 int y= mvy+from.y;
@@ -112,7 +112,7 @@ public class Tabuleiro {
                 }
                 
             }
-            ArrayList<Position> aux = getValidsMoviments(m.Get(i),from,time);
+            ArrayList<Position> aux = getValidsMoviments(m.Get(i),from,time,direcao);
             if(aux.size()>0)
             {
                 pos.addAll(aux);

@@ -65,7 +65,7 @@ public class TelaCemiterio extends JFrame {
 
     public void Close(){
     sender.setEnabled(true);
-        sender.setAlwaysOnTop(true);
+    sender.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +85,6 @@ public class TelaCemiterio extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(244, 323));
         setMinimumSize(new java.awt.Dimension(244, 323));
-        setPreferredSize(new java.awt.Dimension(244, 323));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

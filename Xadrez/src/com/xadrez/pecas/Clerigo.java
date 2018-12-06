@@ -39,7 +39,7 @@ public class Clerigo extends Peca {
     }
    
     @Override
-    public void setPosition(int x, int y) {      
+    public void setPosition(int x, int y) {     
       posicao.x=x;
       posicao.y=y;
     }

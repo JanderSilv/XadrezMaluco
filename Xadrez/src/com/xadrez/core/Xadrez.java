@@ -72,7 +72,7 @@ public class Xadrez {
           if(p!=null && p.time == timeAtual)
           {
                pecaParaMover = p;
-               PintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time),Color.blue);
+               PintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.time,p.direcao),Color.blue);
                PintarCasa(new Position(x, y), Color.yellow);
           }
           else
@@ -91,7 +91,7 @@ public class Xadrez {
    private void ExecutaMovimentacao(int x,int y){
    if(pecaParaMover!=null)
             {
-                ArrayList<Position> mov_validos=tabuleiro.getValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.time);           
+                ArrayList<Position> mov_validos=tabuleiro.getValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.time,pecaParaMover.direcao);           
                 
                 for(Position pos:mov_validos)
                 {                      
@@ -162,6 +162,7 @@ public class Xadrez {
                  jogador1.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
+             p.Atualizacao();
          }
          for(Peca p:j2_Pecas){
              if(p.coolDown>0) {p.coolDown--;}
@@ -169,6 +170,7 @@ public class Xadrez {
                  jogador2.MatarPeca(p);
                  tabuleiro.removePeca(p);
              }
+             p.Atualizacao();
          }
    
    }
@@ -219,7 +221,7 @@ public class Xadrez {
     }
     
    //Atualiza a janela
-   private void UpdateWindow(){
+   public void UpdateWindow(){
        for(int x=0;x<tabuleiro.SIZE;x++){
             for(int y=0;y<tabuleiro.SIZE;y++){
             
@@ -252,6 +254,10 @@ public class Xadrez {
     //Retorna a peça na posiçao especificada
    public Peca getPeca(Position p){
    return  tabuleiro.getPeca(p.x,p.y);
+   }
+   
+   public void setPeca(Peca p){
+    tabuleiro.setPeca(p.getPosition(), p);
    }
    
     //Retorna as peças nas coordenadas especificadas, dentro do raio especificado, IgnorarNulos para ignorar casas vazias
@@ -318,6 +324,10 @@ public class Xadrez {
    //Retorna o fluxo de jogo atual
    public Action getAction(){
    return acao;
+   }
+    //Retorna o tamanho do tabuleiro
+   public int getTabuleiroTam(){
+   return tabuleiro.SIZE;
    }
    
 
