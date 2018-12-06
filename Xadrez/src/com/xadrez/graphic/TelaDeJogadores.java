@@ -6,6 +6,7 @@
 package com.xadrez.graphic;
 
 import com.xadrez.core.Jogador;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
         this.setLocation(550,300);
         this.setResizable(false);
         initComponents();
+        setIcon();
     }
 
     /**
@@ -128,4 +130,8 @@ public class TelaDeJogadores extends javax.swing.JFrame {
     private javax.swing.JTextField txf_Nome_Jogador1;
     private javax.swing.JTextField txf_Nome_Jogador2;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+    }
 }

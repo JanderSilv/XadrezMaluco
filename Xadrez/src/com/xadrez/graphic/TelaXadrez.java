@@ -12,6 +12,7 @@ import com.xadrez.core.XadrezButton;
 import com.xadrez.core.XadrezButtonActionListener;
 import com.xadrez.fontes.Fontes;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import static javax.security.auth.callback.ConfirmationCallback.YES;
 import javax.swing.DefaultListModel;
@@ -42,6 +43,8 @@ public class TelaXadrez extends javax.swing.JFrame {
        
         initComponents();
         
+        setIcon();
+                
         tpFonte = new Fontes();
         txt_Nome_Player.setFont(tpFonte.GetFonte(tpFonte.Sketch, 0, 24));
         txt_Cemiterio.setFont(tpFonte.GetFonte(tpFonte.doubleFeature, 0, 18));
@@ -186,8 +189,7 @@ public class TelaXadrez extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        panel_Controle.setBackground(new java.awt.Color(204, 204, 204));
-        panel_Controle.setForeground(new java.awt.Color(153, 153, 153));
+        panel_Controle.setBackground(new java.awt.Color(255, 153, 102));
 
         btn_ImgPeca.setBackground(new java.awt.Color(255, 255, 255));
         btn_ImgPeca.setBorder(null);
@@ -347,8 +349,8 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txt_MensagemUsuario.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         txt_MensagemUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_MensagemUsuario.setText("MENSAGEM PARA USUARIO");
 
         javax.swing.GroupLayout canvasBackgrounds1Layout = new javax.swing.GroupLayout(canvasBackgrounds1);
         canvasBackgrounds1.setLayout(canvasBackgrounds1Layout);
@@ -364,8 +366,8 @@ public class TelaXadrez extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
                         .addComponent(btn_Nova_Partida)
-                        .addGap(220, 220, 220)
-                        .addComponent(txt_MensagemUsuario)
+                        .addGap(157, 157, 157)
+                        .addComponent(txt_MensagemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         canvasBackgrounds1Layout.setVerticalGroup(
@@ -374,7 +376,7 @@ public class TelaXadrez extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_Nova_Partida)
-                    .addComponent(txt_MensagemUsuario))
+                    .addComponent(txt_MensagemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_Tabuleiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -475,4 +477,8 @@ public class TelaXadrez extends javax.swing.JFrame {
     private javax.swing.JLabel txt_Nome_Player;
     private javax.swing.JLabel txt_Vida_Peca;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+    }
 }

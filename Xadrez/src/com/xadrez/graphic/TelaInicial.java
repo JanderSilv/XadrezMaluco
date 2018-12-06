@@ -2,6 +2,7 @@
 package com.xadrez.graphic;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 
@@ -12,6 +13,7 @@ public class TelaInicial extends javax.swing.JFrame {
         this.setLocation(550,300);
         this.setResizable(false);
         initComponents();
+        setIcon();
     }
 
   
@@ -115,4 +117,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btn_tutorial;
     private com.xadrez.graphic.CanvasBackgrounds canvasBackgrounds1;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+    }
 }
