@@ -19,17 +19,23 @@ public class Clerigo extends Peca {
     ClerigoAction habilidade;
     public Clerigo(Position posicao, int time,Xadrez xadrez){
         super(30, "Clerigo", posicao, time,xadrez);
-        if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_vermelho.png");
+        if(time==0){
+            icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azul.png");
+            iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_azulGrande.png");
+        }
+        else{
+            icon = new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_vermelho.png");
+            iconGrande= new ImageIcon("src\\com\\xadrez\\imagens\\clerigo_vermelhoGrande.png");
+        }
         habilidade = new ClerigoAction(xadrez, this);
         CriarMovimentacao();
     }
     
     @Override
     public void CriarMovimentacao() {
-        movimentacao.Add(new MovTree(0,1)).Add(new MovTree(0,2)).Add(new MovTree(0,3));
-        movimentacao.Add(new MovTree(1,1)).Add(new MovTree(2,2)).Add(new MovTree(3,3));
-        movimentacao.Add(new MovTree(-1,1)).Add(new MovTree(-2,2)).Add(new MovTree(-3,3));
+        movimentacao.add(new MovTree(0,1)).add(new MovTree(0,2)).add(new MovTree(0,3));
+        movimentacao.add(new MovTree(1,1)).add(new MovTree(2,2)).add(new MovTree(3,3));
+        movimentacao.add(new MovTree(-1,1)).add(new MovTree(-2,2)).add(new MovTree(-3,3));
     
 }
 

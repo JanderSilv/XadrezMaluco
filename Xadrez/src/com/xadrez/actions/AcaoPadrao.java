@@ -21,7 +21,7 @@ public class AcaoPadrao extends Action{
     @Override
     public void executeAction(ActionEvent e) {
        XadrezButton button = (XadrezButton)e.getSource();      
-       xadrez.CasaSelecionada(button.coord_x, button.coord_y);
+       xadrez.casaSelecionada(button.coord_x, button.coord_y);
     }
     
 }

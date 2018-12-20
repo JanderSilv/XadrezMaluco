@@ -21,6 +21,8 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jSplitPane2 = new javax.swing.JSplitPane();
         canvasBackgrounds1 = new com.xadrez.graphic.CanvasBackgrounds();
         btn_jogar = new javax.swing.JButton();
         btn_creditos = new javax.swing.JButton();
@@ -102,7 +104,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_jogarActionPerformed
 
     private void btn_tutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tutorialActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_btn_tutorialActionPerformed
 
     private void btn_creditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_creditosActionPerformed
@@ -116,6 +118,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btn_jogar;
     private javax.swing.JButton btn_tutorial;
     private com.xadrez.graphic.CanvasBackgrounds canvasBackgrounds1;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {

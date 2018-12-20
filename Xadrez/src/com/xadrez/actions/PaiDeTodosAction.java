@@ -19,9 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class PaiDeTodosAction extends Action {
     Peca p;
+    int restantes;
     public PaiDeTodosAction(Xadrez x,Peca P) {
         super(x);
         p=P;
+        restantes=2;
         
     }
 
@@ -29,19 +31,22 @@ public class PaiDeTodosAction extends Action {
     public void executeAction(ActionEvent e) {
         XadrezButton button = (XadrezButton)e.getSource();
          Peca P=xadrez.getPeca(button.coord_x, button.coord_y);
-         
+        
          if(null==P){//verifica se onde o usuario clicou  está vazio
           xadrez.removePeca(p.getPosition());
           xadrez.movePeca(button.coord_x, button.coord_y,p);
              Audio.playSound("PaiDeTodos.wav", false);
-          p.atualizaCoolDown(10);         
+          p.atualizaCoolDown(1);         
           xadrez.moveu=true;
           xadrez.RestaurarFluxo();//faz o jogo sair do estado de habilidade (OBRIGATÓRIO)
+          restantes--;
           
-         }else{
-             
+           if(restantes==0){
+            p.setCoolDown( -1);
+           }
+           
+         }else{  
             JOptionPane.showMessageDialog(null, "O espaço contem uma peca, selecione uma peca valida");
-            
          }
     }
     

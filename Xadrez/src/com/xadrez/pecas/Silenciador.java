@@ -21,18 +21,24 @@ public class Silenciador extends Peca {
     
     public Silenciador(Position posicao,int time,Xadrez xadrez) {
         super(40, "Silenciador", posicao,time,xadrez);
-         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_vermelho.png");
+         if(time==0){
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_azul.png");
+              iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_azulGrande.png");
+         }
+         else{
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_vermelho.png");
+              iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\silenciador_vermelhoGrande.png");
+         }
        CriarMovimentacao();
        habilidade = new SilenciadorAction(xadrez,this);
     }
     
     @Override
     public void CriarMovimentacao(){
-        movimentacao.Add(new MovTree(-1,0,false)).Add(new MovTree(-1,1,true));
-        movimentacao.Add(new MovTree( 0,1,false)).Add(new MovTree( 1,1,true));
-        movimentacao.Add(new MovTree( 1,0,false)).Add(new MovTree(1,-1,true));
-        movimentacao.Add(new MovTree(0,-1,false)).Add(new MovTree(-1,-1,true));
+        movimentacao.add(new MovTree(-1,0,false)).add(new MovTree(-1,1,true));
+        movimentacao.add(new MovTree( 0,1,false)).add(new MovTree( 1,1,true));
+        movimentacao.add(new MovTree( 1,0,false)).add(new MovTree(1,-1,true));
+        movimentacao.add(new MovTree(0,-1,false)).add(new MovTree(-1,-1,true));
     }
     
     @Override

@@ -41,17 +41,17 @@ public class Peao extends Peca {
     
     @Override
     public void CriarMovimentacao() {
-       movimentacao.Add(new MovTree(0, 1,true,false,true)).Add(new MovTree(0, 2,true,false,true));
-       movimentacao.Add(new MovTree(-1, 1,true,true,false));
-       movimentacao.Add(new MovTree(1, 1,true,true,false));
+       movimentacao.add(new MovTree(0, 1,true,false,true)).add(new MovTree(0, 2,true,false,true));
+       movimentacao.add(new MovTree(-1, 1,true,true,false));
+       movimentacao.add(new MovTree(1, 1,true,true,false));
     }
     @Override
     public MovTree getMovimentacao() {
         if(jaMoveu){          
             movimentacao =  new MovTree(null,true,false,true);
-            movimentacao.Add(new MovTree(0, 1,true,false,true));  
-            movimentacao.Add(new MovTree(-1, 1,true,true,false));
-            movimentacao.Add(new MovTree(1, 1,true,true,false));
+            movimentacao.add(new MovTree(0, 1,true,false,true));  
+            movimentacao.add(new MovTree(-1, 1,true,true,false));
+            movimentacao.add(new MovTree(1, 1,true,true,false));
         }
         return movimentacao;
     }

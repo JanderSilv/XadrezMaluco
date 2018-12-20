@@ -107,7 +107,7 @@ public class TelaXadrez extends javax.swing.JFrame {
         btn_Ativar_Habilidade.setEnabled(false);
     }else{    
         txt_Nome_Peca.setText(p.getNome());
-        txt_Vida_Peca.setText(String.valueOf(p.getTime()));
+        txt_Vida_Peca.setText(String.valueOf(p.getVida()));
         btn_ImgPeca.setIcon(p.iconGrande);
         if(p.getCoolDown()==-1){
         txt_Habilidade_Peca.setText("não tem");
@@ -443,6 +443,8 @@ public class TelaXadrez extends javax.swing.JFrame {
             xadrez.moveu=true;
             xadrez.usouHabilidade = true;
             xadrez.mudaTurno();
+        }else{
+        JOptionPane.showMessageDialog(null, "É preciso mover uma peça ou usar uma habilidade antes");
         }
     }//GEN-LAST:event_btn_finalizarActionPerformed
 

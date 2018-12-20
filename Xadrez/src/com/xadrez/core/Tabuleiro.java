@@ -87,7 +87,7 @@ public class Tabuleiro {
         
         if(m==null || from == null) return null;
            
-        int size = m.Count(); 
+        int size = m.count(); 
   
         for(int i =0;i<size;i++)
         {
@@ -103,16 +103,16 @@ public class Tabuleiro {
                 Peca p =getPeca(x, y);
                 
                 if(p!=null){
-                 if((m.IsParavel()==false) || (m.IsParavel() && p.getTime() == time) || m.MoveApenas()==true) break;
+                 if((m.isParavel()==false) || (m.isParavel() && p.getTime() == time) || m.moveApenas()==true) break;
                  
-                 if(m.IsParavel() && p.getTime()!=time && m.MoveApenas() == false ){
+                 if(m.isParavel() && p.getTime()!=time && m.moveApenas() == false ){
                     pos.add(new Position(x, y));
                     break;
                  }
                 }
                 
             }
-            ArrayList<Position> aux = getValidsMoviments(m.Get(i),from,time,direcao);
+            ArrayList<Position> aux = getValidsMoviments(m.get(i),from,time,direcao);
             if(aux.size()>0)
             {
                 pos.addAll(aux);
@@ -129,17 +129,17 @@ public class Tabuleiro {
                  int x= m.value.x+from.x;
                  int y= mvy+from.y;
                  
-                 if(m.IsParavel()){                   
+                 if(m.isParavel()){                   
                     if(isInBounds(x,y))
                     {
                         Peca p = getPeca(x,y);
                         
                         if(p==null){
-                            if(m.AtaqueApenas()==false) pos.add(new Position(x, y));
+                            if(m.ataqueApenas()==false) pos.add(new Position(x, y));
                         }
                         else if(p.getTime() != time)
                         {
-                            if(m.MoveApenas()==false) pos.add(new Position(x, y));
+                            if(m.moveApenas()==false) pos.add(new Position(x, y));
                         }
                     } 
                  }

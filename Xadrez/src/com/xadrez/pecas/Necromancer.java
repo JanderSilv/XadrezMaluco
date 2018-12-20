@@ -21,18 +21,24 @@ public class Necromancer extends Peca {
     
     public Necromancer(Position posicao, int time,Xadrez xadrez) {
         super(25, "Necromancer", posicao, time,xadrez);
-         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_vermelho.png");
+         if(time==0){
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_azul.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_azulGrande.png");
+         }
+         else{
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_vermelho.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\necromancer_vermelhoGrande.png");
+         }
          habilidade = new NecromancerAction(xadrez, this);
          CriarMovimentacao();
     }
 
     @Override
     public void CriarMovimentacao() {
-      movimentacao.Add(new MovTree(1, 1)).Add(new MovTree(2, 2)); // Movimentação para diagonal a direita.
-      movimentacao.Add(new MovTree(1, -1)).Add(new MovTree(2, -2)); // Movimentação para a frente-diagonal a direita.
-      movimentacao.Add(new MovTree(-1, -1)).Add(new MovTree(-2, -2)); // Movimentação para a diagonal a esquerda.
-      movimentacao.Add(new MovTree(-1, 1)).Add(new MovTree(-2, 2)); // Movimentação para a frente-diagonal a esquerda.
+      movimentacao.add(new MovTree(1, 1)).add(new MovTree(2, 2)); // Movimentação para diagonal a direita.
+      movimentacao.add(new MovTree(1, -1)).add(new MovTree(2, -2)); // Movimentação para a frente-diagonal a direita.
+      movimentacao.add(new MovTree(-1, -1)).add(new MovTree(-2, -2)); // Movimentação para a diagonal a esquerda.
+      movimentacao.add(new MovTree(-1, 1)).add(new MovTree(-2, 2)); // Movimentação para a frente-diagonal a esquerda.
     }    
     @Override
     public MovTree getMovimentacao() {

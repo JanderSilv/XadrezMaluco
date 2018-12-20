@@ -40,7 +40,7 @@ public class Xadrez {
     public boolean moveu;
     public boolean usouHabilidade;
     
-    private final Action acaoPadrao;
+    private final Action ACAOPADRAO;
     private Action acao;
     
     public Xadrez(Jogador j1,Jogador j2,TelaXadrez window){
@@ -50,21 +50,21 @@ public class Xadrez {
     jogador1 = j1;
     jogador2 = j2;
     this.window = window;
-    GerarPecas(jogador1);
-    GerarPecas(jogador2);
-    ColocarNoTabuleiro();
-    UpdateWindow();
+    gerarPecas(jogador1);
+    gerarPecas(jogador2);
+    colocarNoTabuleiro();
+    updateWindow();
     
     window.SetPlayer(j1);
     
-    acaoPadrao = new AcaoPadrao(this);
-    acao=acaoPadrao;
+    ACAOPADRAO = new AcaoPadrao(this);
+    acao=ACAOPADRAO;
     }
     
     //Acão padrao a ser tomada quando o usuário seleciona uma peça
-   public void CasaSelecionada(int x,int y){
+   public void casaSelecionada(int x,int y){
    
-       UpdateWindow();
+       updateWindow();
        Peca p = pecaEmSelecao =tabuleiro.getPeca(x, y);
         getWindow().SetPeca(p);
      
@@ -73,12 +73,12 @@ public class Xadrez {
           if(p!=null && p.getTime() == timeAtual)
           {
                pecaParaMover = p;
-               PintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.getTime(),p.direcao),Color.blue);
-               PintarCasa(new Position(x, y), Color.yellow);
+               pintarCasas(tabuleiro.getValidsMoviments(p.getMovimentacao(), p.getPosition(), p.getTime(),p.direcao),Color.blue);
+               pintarCasa(new Position(x, y), Color.yellow);
           }
-          else
+          else 
           {
-               ExecutaMovimentacao(x, y);
+               executaMovimentacao(x, y);
                 pecaParaMover = null;
           }  
        }
@@ -89,7 +89,8 @@ public class Xadrez {
    }
    
     //Responsavel por movimentação das peças
-   private void ExecutaMovimentacao(int x,int y){
+   private void executaMovimentacao(int x,int y){
+       boolean sucesso=false;
    if(pecaParaMover!=null)
             {
                 ArrayList<Position> mov_validos=tabuleiro.getValidsMoviments(pecaParaMover.getMovimentacao(), pecaParaMover.getPosition(), pecaParaMover.getTime(),pecaParaMover.direcao);           
@@ -118,15 +119,18 @@ public class Xadrez {
                             movePeca(x, y, pecaParaMover);                               
                            
                            
-                             UpdateWindow();
-                           
+                             updateWindow();
+                           sucesso = true;
                             moveu = true;
                             break;
                           
-                        }
+                        } 
                      
                 }
             }
+        if(!sucesso){
+            JOptionPane.showMessageDialog(null, "Local inválido");
+        }
    }  
    
    //Faz a mudança de turno do jogo
@@ -141,8 +145,8 @@ public class Xadrez {
         moveu = false;
         usouHabilidade = false;
         
-        AtualizarPecas();
-        UpdateWindow();
+        atualizarPecas();
+        updateWindow();
         
         if(jogador1.getPecas().size()==0){
             new TelaFimDeJogo(jogador2);
@@ -155,7 +159,7 @@ public class Xadrez {
     }
    }
    
-   public void AtualizarPecas(){
+   public void atualizarPecas(){
         ArrayList<Peca> j1_Pecas =jogador1.getPecas();
         ArrayList<Peca> j2_Pecas =jogador2.getPecas();
         
@@ -178,22 +182,22 @@ public class Xadrez {
    
    }
    //Troca a cor das casas do tabuleiro
-   private void PintarCasas(ArrayList<Position> casas, Color cor){
+   private void pintarCasas(ArrayList<Position> casas, Color cor){
       
        for(Position p:casas){
             getWindow().casas_tab[p.x][p.y].setBackground(cor);
        }
    }
-   private void PintarCasa(Position casa,Color cor){
+   private void pintarCasa(Position casa,Color cor){
         getWindow().casas_tab[casa.x][casa.y].setBackground(cor);
    }
    
    //Cria objetos do tipo Peça e coloca na lista de peças do jogador
-   private void GerarPecas(Jogador j){
+   private void gerarPecas(Jogador j){
          ArrayList<Peca> pecas =j.getPecas();
          int time = j.getTime();
      for(int x=0;x<tabuleiro.SIZE;x++){
-     //  pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));     
+       pecas.add(new Peao(new Position(x, Math.abs(time-1)) ,time,this));
      }
      pecas.add(new Clerigo(new Position(0, Math.abs(time))   ,time,this));
      pecas.add(new Clerigo(new Position(9, Math.abs(time))   ,time,this));
@@ -209,12 +213,12 @@ public class Xadrez {
     }
     
    //Coloca as peças dos jogadores no tabuleiro (obs: independente se já há outra peça no local)
-   private void ColocarNoTabuleiro(){
+   private void colocarNoTabuleiro(){
      Peca p;
       ArrayList<Peca> j1_Pecas =jogador1.getPecas();
       ArrayList<Peca> j2_Pecas =jogador2.getPecas();
     
-      for(int i=0;i<tabuleiro.SIZE;i++){
+      for(int i=0;i<tabuleiro.SIZE * 2;i++){
        
              p = j1_Pecas.get(i);
         tabuleiro.setPeca(p.getPosition(), p);
@@ -224,7 +228,7 @@ public class Xadrez {
     }
     
    //Atualiza a janela
-   public void UpdateWindow(){
+   public void updateWindow(){
        for(int x=0;x<tabuleiro.SIZE;x++){
             for(int y=0;y<tabuleiro.SIZE;y++){
             
@@ -316,7 +320,7 @@ public class Xadrez {
    
    //Faz o fluxo de jogo voltar ao original
    public void RestaurarFluxo(){
-    acao = acaoPadrao;
+    acao = ACAOPADRAO;
    }
   
    //Muda o fluxo de jogo

@@ -14,20 +14,27 @@ import javax.swing.ImageIcon;
 
 public class PaiDeTodos extends Peca {
         PaiDeTodosAction habilidade;
+        
     public PaiDeTodos(Position posicao, int time,Xadrez xadrez) {
         super(20, "PaiDeTodos", posicao, time,xadrez);
-         if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_vermelho.png");
+         if(time==0){
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_azul.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_azulGrande.png");
+         }
+         else{
+             icon = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_vermelho.png");
+             iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\paiDeTodos_vermelhoGrande.png");
+         }
         CriarMovimentacao();
         habilidade = new PaiDeTodosAction(xadrez,this);
     }
 
     @Override
     public void CriarMovimentacao() {
-      movimentacao.Add(new MovTree(0, 1)).Add(new MovTree(0,2)); // Movimentação para frente.
-      movimentacao.Add(new MovTree(0, -1)).Add(new MovTree(0,-2)); // Movimentação para tras.
-      movimentacao.Add(new MovTree(1, 0)).Add(new MovTree(2,0)); // Movimentação para direita.
-      movimentacao.Add(new MovTree(-1, 0)).Add(new MovTree(-2,0)); // Movimentação para esquerda.
+      movimentacao.add(new MovTree(0, 1)).add(new MovTree(0,2)); // Movimentação para frente.
+      movimentacao.add(new MovTree(0, -1)).add(new MovTree(0,-2)); // Movimentação para tras.
+      movimentacao.add(new MovTree(1, 0)).add(new MovTree(2,0)); // Movimentação para direita.
+      movimentacao.add(new MovTree(-1, 0)).add(new MovTree(-2,0)); // Movimentação para esquerda.
     }   
     @Override
     public MovTree getMovimentacao() {

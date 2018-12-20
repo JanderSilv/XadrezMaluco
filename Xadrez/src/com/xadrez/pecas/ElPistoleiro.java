@@ -15,8 +15,14 @@ import javax.swing.ImageIcon;
        int ultimaDir = 2;
        public ElPistoleiro(Position posicao,int time,Xadrez xadrez){
        super(20, "ElPistoleiro", posicao, time,xadrez);
-        if(time==0)icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azul.png");
-        else icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelho.png");
+        if(time==0){
+            icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azul.png");
+            iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_azulGrande.png");
+        }
+        else{
+            icon = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelho.png");
+            iconGrande = new ImageIcon("src\\com\\xadrez\\imagens\\pistoleiro_vermelhoGrande.png");
+        }
         CriarMovimentacao();
         habilidade= new ElPistoleiroAction(xadrez, this);
        }      
@@ -31,9 +37,9 @@ import javax.swing.ImageIcon;
     public MovTree getMovimentacao() {
      
           movimentacao = new MovTree(null);
-          if(ultimaDir !=0) movimentacao.Add(new MovTree(0,1)).Add(new MovTree(0,2)).Add(new MovTree(0,3)); // Movimentação para frente.
-          if(ultimaDir !=-1) movimentacao.Add(new MovTree(-1,1)).Add(new MovTree(-1,2)).Add(new MovTree(-1,3)); // Movimentação esquerda-frente.
-          if(ultimaDir !=1) movimentacao.Add(new MovTree(1,1)).Add(new MovTree(1,2)).Add(new MovTree(1,3)); // Movimentação direita-frente.
+          if(ultimaDir !=0) movimentacao.add(new MovTree(0,1)).add(new MovTree(0,2)).add(new MovTree(0,3)); // Movimentação para frente.
+          if(ultimaDir !=-1) movimentacao.add(new MovTree(-1,1)).add(new MovTree(-1,2)).add(new MovTree(-1,3)); // Movimentação esquerda-frente.
+          if(ultimaDir !=1) movimentacao.add(new MovTree(1,1)).add(new MovTree(1,2)).add(new MovTree(1,3)); // Movimentação direita-frente.
     
         return movimentacao; //To change body of generated methods, choose Tools | Templates.
     }

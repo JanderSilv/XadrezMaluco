@@ -5,19 +5,54 @@
  */
 package com.xadrez.graphic;
 
+import com.xadrez.tutorial.ClerigoTutorial;
+import com.xadrez.tutorial.ElPistoleiroTutorial;
+import com.xadrez.tutorial.NecromancerTutorial;
+import com.xadrez.tutorial.PaiDeTodosTutorial;
+import com.xadrez.tutorial.PeaoTutorial;
+import com.xadrez.tutorial.PecaTutorial;
+import com.xadrez.tutorial.RainhaTutorial;
+import com.xadrez.tutorial.SilenciadorTutorial;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
 /**
  *
- * @author Fiscal
+ * @author ruann
  */
-public class TelaTutorial extends javax.swing.JPanel {
+public class TelaTutorial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaTutorial2
-     */
+    ArrayList<PecaTutorial> lista= new ArrayList<>();
+   PecaTutorial atual;
+   int i=0;
     public TelaTutorial() {
+        lista.add(new ClerigoTutorial());
+        lista.add(new ElPistoleiroTutorial());
+        lista.add(new NecromancerTutorial());
+        lista.add(new PaiDeTodosTutorial());
+        lista.add(new PeaoTutorial());
+        lista.add(new RainhaTutorial());
+        lista.add(new SilenciadorTutorial());
+        
+      
+        
+        
+        
         initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
     }
 
+    public void Mostrar(){
+    
+      atual = lista.get(i);
+      if(atual == null) return;
+      btn_imagem.setIcon(atual.image);
+      txt_comoUsar.setText(atual.comoUsar);
+      txt_habilidade.setText(atual.habilidade);
+      txt_movimentacao.setText(atual.movimentacao);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,62 +62,141 @@ public class TelaTutorial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        canvasBackgrounds1 = new com.xadrez.graphic.CanvasBackgrounds();
+        btn_anterior = new javax.swing.JButton();
+        btn_proximo = new javax.swing.JButton();
+        btn_imagem = new javax.swing.JButton();
+        txt_movimentacao = new javax.swing.JLabel();
+        txt_habilidade = new javax.swing.JLabel();
+        txt_comoUsar = new javax.swing.JLabel();
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
-        jToggleButton1.setText("Voltar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(400, 485));
+        setMinimumSize(new java.awt.Dimension(400, 485));
+
+        canvasBackgrounds1.setImg(new ImageIcon("src\\com\\xadrez\\imagens\\TelaTutorial.jpg"));
+
+        btn_anterior.setBackground(new Color(0,0,0,0));
+        btn_anterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btn_anteriorActionPerformed(evt);
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("\t\t// TUTORIAL \n\n\n  /*\tBem vindo ao Xadrez Maluco !! \n\n     >\tObjetivo: \n\tMandar todas as peças do oponente para \n     direto pro cemiterio.\n\n     >  Peças:\t\n\n     () Pai de Todos -> Tem a habilidade de se\nteleportar para qualquer lugar vazio do jogo; \n     () ElPistoleiro -> Quando está entre duas\npeças pode usar sua habilidade para mata-los;\n     () Necromancer -> Tem a habilidade de revi\nver qualuer peça aliada;\n     () Silenciador -> Com sua habilidade ele \npode bloquear habilidades de qualquer peça;\n     () Clerigo -> Pode curar as peças aliadas\naumentando a vida da peça escolhida;        */");
-        jScrollPane2.setViewportView(jTextArea2);
+        btn_proximo.setBackground(new Color(0,0,0,0));
+        btn_proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_proximoActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        btn_imagem.setFocusable(false);
+
+        txt_movimentacao.setText("jLabel1");
+
+        txt_habilidade.setText("jLabel2");
+
+        txt_comoUsar.setForeground(new java.awt.Color(255, 255, 255));
+        txt_comoUsar.setText("jLabel3");
+
+        javax.swing.GroupLayout canvasBackgrounds1Layout = new javax.swing.GroupLayout(canvasBackgrounds1);
+        canvasBackgrounds1.setLayout(canvasBackgrounds1Layout);
+        canvasBackgrounds1Layout.setHorizontalGroup(
+            canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                        .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(btn_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_comoUsar))))
+                        .addGap(0, 149, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(txt_habilidade)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        canvasBackgrounds1Layout.setVerticalGroup(
+            canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasBackgrounds1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(btn_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(txt_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(txt_habilidade)
+                .addGap(54, 54, 54)
+                .addComponent(txt_comoUsar)
+                .addGap(42, 42, 42)
+                .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(canvasBackgrounds1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addGap(23, 23, 23))
+            .addComponent(canvasBackgrounds1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btn_proximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximoActionPerformed
+        if(i<lista.size()-1) i++;
+        else i=0;
+        
+        Mostrar();
+    }//GEN-LAST:event_btn_proximoActionPerformed
+
+    private void btn_anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anteriorActionPerformed
+       if(i>0) i--;
+       else i = lista.size()-1;
+       
+       Mostrar();
+    }//GEN-LAST:event_btn_anteriorActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton btn_anterior;
+    private javax.swing.JButton btn_imagem;
+    private javax.swing.JButton btn_proximo;
+    private com.xadrez.graphic.CanvasBackgrounds canvasBackgrounds1;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel txt_comoUsar;
+    private javax.swing.JLabel txt_habilidade;
+    private javax.swing.JLabel txt_movimentacao;
     // End of variables declaration//GEN-END:variables
+
+   
 }

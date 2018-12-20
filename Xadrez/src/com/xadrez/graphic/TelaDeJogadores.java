@@ -39,7 +39,6 @@ public class TelaDeJogadores extends javax.swing.JFrame {
         txf_Nome_Jogador1 = new javax.swing.JTextField();
         txf_Nome_Jogador2 = new javax.swing.JTextField();
         btn_ok = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,8 +55,6 @@ public class TelaDeJogadores extends javax.swing.JFrame {
             }
         });
 
-        btn_cancelar.setText("VOLTAR");
-
         javax.swing.GroupLayout canvasBackgrounds1Layout = new javax.swing.GroupLayout(canvasBackgrounds1);
         canvasBackgrounds1.setLayout(canvasBackgrounds1Layout);
         canvasBackgrounds1Layout.setHorizontalGroup(
@@ -65,17 +62,14 @@ public class TelaDeJogadores extends javax.swing.JFrame {
             .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
                 .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
+                        .addGap(158, 158, 158)
                         .addGroup(canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txf_Nome_Jogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txf_Nome_Jogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(canvasBackgrounds1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(109, 109, 109)
                         .addComponent(btn_ok)))
                 .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasBackgrounds1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_cancelar))
         );
         canvasBackgrounds1Layout.setVerticalGroup(
             canvasBackgrounds1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,8 +80,7 @@ public class TelaDeJogadores extends javax.swing.JFrame {
                 .addComponent(txf_Nome_Jogador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_ok)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btn_cancelar))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,14 +110,14 @@ public class TelaDeJogadores extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_okActionPerformed
    
- }                                           
+ }
+   
     /**
      * @param args the command line arguments
      */
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_ok;
     private com.xadrez.graphic.CanvasBackgrounds canvasBackgrounds1;
     private javax.swing.JTextField txf_Nome_Jogador1;

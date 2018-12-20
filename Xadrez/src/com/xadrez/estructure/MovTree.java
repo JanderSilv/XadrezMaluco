@@ -54,27 +54,27 @@ public class MovTree {
          this.moveApenas = moveApenas;
    }
    
-   public MovTree Add(MovTree no){
+   public MovTree add(MovTree no){
         path.add(no);
         return no;
    }
-   public MovTree[] AddRange(Collection<MovTree> c){
+   public MovTree[] addRange(Collection<MovTree> c){
        path.addAll(c);
        return (MovTree[])c.toArray();
    }
-   public MovTree Get(int index){
+   public MovTree get(int index){
        return path.get(index);
    }
-   public int Count(){
+   public int count(){
        return path.size();
    }
-   public boolean IsParavel(){
+   public boolean isParavel(){
        return paravel;
    }
-   public boolean AtaqueApenas(){
+   public boolean ataqueApenas(){
        return ataqueApenas;
    }
-   public boolean MoveApenas(){
+   public boolean moveApenas(){
       return moveApenas;
    }
 }
